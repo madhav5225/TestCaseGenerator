@@ -82,6 +82,7 @@ function GeneratorForArray()
 	
     req=new XMLHttpRequest();
  // Creating Request
+ 
     req.open("GET","GeneratorForArray?TestCases="+TestCases+
     		"&ArraySize="+ArraySize+
     		"&DistinctValue="+DistinctValue+
