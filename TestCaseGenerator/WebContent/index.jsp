@@ -27,7 +27,8 @@ Array Size<input placeholder="Array_Size" id="ArraySize" type="number"><br>
   </select><br>
   
   
-Min Value<input placeholder="Min_value" id="MinValueForArray" type="number"><br>
+ 
+MinMad Value<input placeholder="Min_value" id="MinValueForArray" type="number"><br>
 Max Value<input placeholder="Max_value" id="MaxValueForArray" type="number"><br>
 	
 Do you want size of array to be written in input file
