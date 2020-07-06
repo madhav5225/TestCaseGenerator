@@ -18,7 +18,7 @@
 <br>
 <div>
 Number of Test-Cases<input placeholder="T_Test_cases" id="TestCasesForArray" type="number"><br>
-Array Size<input placeholder="Array_Size" id="ArraySize" type="number"><br>
+Array Length<input placeholder="Array_Size" id="ArraySize" type="number"><br>
   
   Do you want distinct values of array
   <select id="DistinctValueForArray" >
