@@ -26,7 +26,7 @@ function Data()
 	
 	
     req=new XMLHttpRequest();
-	   req.open("GET","GeneratorforRandomNumber?TestCases="+TestCases+"&MinValue="+MinValue+"&MaxValue="+MaxValue+"&MaxValue",true);
+	   req.open("GET","GeneratorForRandomNumbers?TestCases="+TestCases+"&MinValue="+MinValue+"&MaxValue="+MaxValue+"&MaxValue",true);
 	   req.send();
 	   req.onreadystatechange=function(){
 		   if(req.readyState==4&&req.status==200)
