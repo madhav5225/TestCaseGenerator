@@ -26,7 +26,7 @@ Array Size<input placeholder="Array_Size" id="ArraySize" type="number"><br>
     <option value="True">True</option>  
   </select><br>
   
-  
+ 
 MinMad Value<input placeholder="Min_value" id="MinValueForArray" type="number"><br>
 Max Value<input placeholder="Max_value" id="MaxValueForArray" type="number"><br>
 	
