@@ -39,9 +39,3 @@ function Data()
 
 </body>
 </html>
-
-
-</body>
-</html>
-</body>
-</html>
