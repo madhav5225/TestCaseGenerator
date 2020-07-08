@@ -10,7 +10,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="main.js"></script>
+<script src="Main.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 body {
@@ -77,10 +77,41 @@ ul.share-buttons li {
 					<!-- Nav tabs -->
 					<ul class="nav nav-tabs tabs-left" role="tablist">
 
+<<<<<<< HEAD
+</div>
+<br>
+<div>
+Number of Test-Cases<input placeholder="T_Test_cases" id="TestCasesForArray" type="number"><br>
+Array Length<input placeholder="Array_Size" id="ArraySize" type="number"><br>
+  
+  Do you want distinct values of array
+  <select id="DistinctValueForArray" >
+    <option value="False">False</option>
+    <option value="True">True</option>  
+  </select><br>
+  
+  
+ 
+Min Value<input placeholder="Min_value" id="MinValueForArray" type="number"><br>
+Max Value<input placeholder="Max_value" id="MaxValueForArray" type="number"><br>
+	
+Do you want size of array to be written in input file
+  <select id="SizeFlagForArray" >
+    <option value="False">False</option>
+    <option value="True">True</option>  
+  </select><br>
+  Do you want number of Test Cases to be written in input file
+  <select id="TestCasesFlagForArray" >
+    <option value="False">False</option>
+    <option value="True">True</option>  
+  </select><br>	
+<button  onclick="GeneratorForArray()">Generate Test Cases</button>
+=======
 						<li role="presentation" data-type="module"
 							data-module-name="number" class=active><a
 							aria-controls="home" data-toggle="tab" href="#number" role="tab">Number</a>
 						</li>
+>>>>>>> branch 'master' of https://github.com/madhav5225/TestCaseGenerator.git
 
 
 					</ul>
@@ -136,7 +167,8 @@ ul.share-buttons li {
 
 												<div class="col-xs-6">
 
-													<label>Include N Test Cases Flag</label> <select
+													<label>Include N Test Cases Flag</label>
+													    <select id="TTestCaseFlagForRandomNumbers"
 														data-type="param"
 														data-param-name="include_n_test_cases_flag"
 														class="form-control">
@@ -150,7 +182,7 @@ ul.share-buttons li {
 										</div>
 								
 										<div id="button_container" class="clearfix">
-											<button type="button" id="buttonid" onclick="GeneratorForRandomNumbers()"
+											<button type="button" onclick="FunctionSelector(<%=1%>)"
 												class="btn btn-success btn-lg pull-left">Generate</button>
 										</div>
 									</div>
@@ -172,7 +204,7 @@ ul.share-buttons li {
 							</button>
 						</div>
 					</div>
-					<textarea class="form-control" cols="10" id="data" rows="15"
+					<textarea id="FinalData" class="form-control" cols="10" id="data" rows="15"
 						style="font-family: monospace"></textarea>
 
 					<div class="alert alert-danger" id="error">
