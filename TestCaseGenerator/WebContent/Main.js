@@ -59,7 +59,10 @@ function GeneratorForArray() {
 	req.send();
 	req.onreadystatechange = function() {
 		if (req.readyState == 4 && req.status == 200)
-			alert(req.responseText);
+		{
+			//alert(req.responseText);
+			document.getElementById("FinalData").innerHTML=req.responseText;
+			}
 
 	}
 }
