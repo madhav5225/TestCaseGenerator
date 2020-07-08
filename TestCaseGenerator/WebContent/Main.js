@@ -1,4 +1,3 @@
-
 function FunctionSelector(x) {
 	
 	if(x==1)
@@ -7,6 +6,7 @@ function FunctionSelector(x) {
 	}
 	
 }
+
 function GeneratorForRandomNumbers() {
 
 	
@@ -33,30 +33,36 @@ function GeneratorForRandomNumbers() {
 			}
 	}
 }
-function GeneratorForArray() {
-	 alert("dsds");
+
+function GeneratorForRandomArray() {
+	
 	var TestCases = document.getElementById("TestCasesForArray").value;
 	var ArraySize = document.getElementById("ArraySize").value;
 	var DistinctValue = document.getElementById("DistinctValueForArray").value;
 	var MinValue = document.getElementById("MinValueForArray").value;
 	var MaxValue = document.getElementById("MaxValueForArray").value;
 	var SizeFlag = document.getElementById("SizeFlagForArray").value;
-	var TestCasesFlag = document
-		.getElementById("TestCasesFlagForArray").value;
+	var TestCasesFlag = document.getElementById("TestCasesFlagForArray").value;
 
 	req = new XMLHttpRequest();
 	// Creating Request
 
-	req.open("GET", "GeneratorForArray?TestCases=" + TestCases
-		+ "&ArraySize=" + ArraySize + "&DistinctValue="
-		+ DistinctValue + "&MinValue=" + MinValue + "&MaxValue="
-		+ MaxValue + "&SizeFlag=" + SizeFlag + "&TestCasesFlag="
-		+ TestCasesFlag, true);
+	req.open("GET", "GeneratorForArray?" 
+		+ "TestCases=" + TestCases
+		+ "&ArraySize=" + ArraySize
+		+ "&DistinctValue="+ DistinctValue
+		+ "&MinValue=" + MinValue
+		+ "&MaxValue="+ MaxValue
+		+ "&SizeFlag=" + SizeFlag
+		+ "&TestCasesFlag="+ TestCasesFlag
+		, true);
 	req.send();
 	req.onreadystatechange = function() {
 		if (req.readyState == 4 && req.status == 200)
-			alert(req.responseText);
+		{
+			//alert("how are you");
+			document.getElementById("FinalData").innerHTML=req.responseText;
+			}
 
 	}
 }
-

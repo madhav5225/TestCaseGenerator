@@ -15,51 +15,50 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/GeneratorForRandomNumbers")
 public class GeneratorForRandomNumbers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GeneratorForRandomNumbers() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		long TestCases=Long.parseLong(request.getParameter("TestCases"));
-		long MinValue=Long.parseLong(request.getParameter("MinValue"));
-		long MaxValue=Long.parseLong(request.getParameter("MaxValue"));
-		String TestCaseFlag=(request.getParameter("TestCaseFlag"));
-		
-	     long[] data=new long[(int) TestCases];
-	     Random rand=new Random();
-	     for(int i=0;i<TestCases;i++)
-	     {
-	    	 data[i]=(long) (MinValue+(Math.abs(rand.nextLong())%(MaxValue-MinValue+1)));
-	    	 //System.out.println(data[i]+"val");
-	     }
-	 
-	     
-	       response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-	     response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-	     String StringData="";
-	     if(TestCaseFlag.equals("1"))
-	    	 StringData+=(TestCases+"\n");
-	     for(int i=0;i<TestCases;i++)
-	     {
-	    	 StringData+=data[i];
-	    	 StringData+="\n";
-	     }
-	    // System.out.println(StringData);
-	     response.getWriter().write(StringData);
+	public GeneratorForRandomNumbers() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		long TestCases = Long.parseLong(request.getParameter("TestCases"));
+		long MinValue = Long.parseLong(request.getParameter("MinValue"));
+		long MaxValue = Long.parseLong(request.getParameter("MaxValue"));
+		String TestCaseFlag = (request.getParameter("TestCaseFlag"));
+
+		String FinalData = "";
+		Random rand = new Random();
+
+		if (TestCaseFlag.equals("1"))
+			FinalData += (TestCases + "\n");
+
+		for (int i = 0; i < TestCases; i++) {
+			FinalData += "" + (MinValue + (Math.abs(rand.nextLong()) % (MaxValue - MinValue + 1))) + "\n";
+
+		}
+		
+		
+		response.setContentType("text/plain"); // Set content type of the response so that jQuery knows what it can
+												// expect.
+		response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+		response.getWriter().write(FinalData);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
