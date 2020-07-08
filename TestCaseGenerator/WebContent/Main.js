@@ -28,7 +28,7 @@ function GeneratorForRandomNumbers() {
 	req.onreadystatechange = function() {
 		if (req.readyState == 4 && req.status == 200)
 			{
-			alert(req.responseText);
+			alert("Hello");
 			document.getElementById("FinalData").innerHTML=req.responseText;
 			}
 	}
