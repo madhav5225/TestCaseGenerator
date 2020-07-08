@@ -10,7 +10,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="main.js"></script>
+<script src="Main.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
 body {
@@ -167,7 +167,8 @@ Do you want size of array to be written in input file
 
 												<div class="col-xs-6">
 
-													<label>Include N Test Cases Flag</label> <select
+													<label>Include N Test Cases Flag</label>
+													    <select id="TTestCaseFlagForRandomNumbers"
 														data-type="param"
 														data-param-name="include_n_test_cases_flag"
 														class="form-control">
@@ -181,7 +182,7 @@ Do you want size of array to be written in input file
 										</div>
 								
 										<div id="button_container" class="clearfix">
-											<button type="button" id="buttonid" onclick="GeneratorForRandomNumbers()"
+											<button type="button" onclick="FunctionSelector(<%=1%>)"
 												class="btn btn-success btn-lg pull-left">Generate</button>
 										</div>
 									</div>
@@ -203,7 +204,7 @@ Do you want size of array to be written in input file
 							</button>
 						</div>
 					</div>
-					<textarea class="form-control" cols="10" id="data" rows="15"
+					<textarea id="FinalData" class="form-control" cols="10" id="data" rows="15"
 						style="font-family: monospace"></textarea>
 
 					<div class="alert alert-danger" id="error">
