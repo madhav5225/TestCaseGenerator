@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,7 +154,9 @@ ul.share-buttons li {
 										</div>
 
 										<div id="button_container" class="clearfix">
+											<button type="button" onclick="GeneratorForRandomNumbers()"
 											<button type="button" onclick="FunctionSelector(1)"
+
 												class="btn btn-success btn-lg pull-left">Generate</button>
 										</div>
 									</div>
