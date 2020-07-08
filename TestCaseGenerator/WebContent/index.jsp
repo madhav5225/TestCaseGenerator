@@ -11,7 +11,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="main.js"></script>
-<title>Insert title here</title>
+<title>Generate Your Test Case here!!!</title>
 <style type="text/css">
 body {
 	padding-top: 5px;
