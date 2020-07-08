@@ -182,7 +182,7 @@ Do you want size of array to be written in input file
 										</div>
 								
 										<div id="button_container" class="clearfix">
-											<button type="button" onclick="FunctionSelector(<%=1%>)"
+											<button type="button" onclick="GeneratorForRandomNumbers()"
 												class="btn btn-success btn-lg pull-left">Generate</button>
 										</div>
 									</div>
