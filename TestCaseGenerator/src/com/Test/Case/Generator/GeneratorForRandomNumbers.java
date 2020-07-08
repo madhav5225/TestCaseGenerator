@@ -31,21 +31,28 @@ public class GeneratorForRandomNumbers extends HttpServlet {
 		long TestCases=Long.parseLong(request.getParameter("TestCases"));
 		long MinValue=Long.parseLong(request.getParameter("MinValue"));
 		long MaxValue=Long.parseLong(request.getParameter("MaxValue"));
-		System.out.println(MaxValue);
+		String TestCaseFlag=(request.getParameter("TestCaseFlag"));
+		
 	     long[] data=new long[(int) TestCases];
 	     Random rand=new Random();
 	     for(int i=0;i<TestCases;i++)
 	     {
-	    	 data[i]=(long) (MinValue+(Math.abs(rand.nextLong())%MaxValue));
+	    	 data[i]=(long) (MinValue+(Math.abs(rand.nextLong())%(MaxValue-MinValue+1)));
+	    	 //System.out.println(data[i]+"val");
 	     }
-	     response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
+	 
+	     
+	       response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
 	     response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
 	     String StringData="";
+	     if(TestCaseFlag.equals("1"))
+	    	 StringData+=(TestCases+"\n");
 	     for(int i=0;i<TestCases;i++)
 	     {
 	    	 StringData+=data[i];
 	    	 StringData+="\n";
 	     }
+	    // System.out.println(StringData);
 	     response.getWriter().write(StringData);
 	}
 

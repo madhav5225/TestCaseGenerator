@@ -1,24 +1,43 @@
+
+function FunctionSelector(x) {
+	
+	if(x==1)
+	{
+	GeneratorForRandomNumbers();
+	}
+	
+}
 function GeneratorForRandomNumbers() {
-	var TestCases = document
-		.getElementById("TestCasesForRandomNumbers").value;
+
+	
+	var TestCases = document.getElementById("TestCasesForRandomNumbers").value;
 	var MinValue = document.getElementById("MinValueForRandomNumbers").value;
 	var MaxValue = document.getElementById("MaxValueForRandomNumbers").value;
-
+	var TestCaseFlag = document.getElementById("TTestCaseFlagForRandomNumbers").value;
+	
+	
 	req = new XMLHttpRequest();
 	// Creating Request
-	req.open("GET", "GeneratorForRandomNumbers?TestCases=" + TestCases
-		+ "&MinValue=" + MinValue + "&MaxValue=" + MaxValue, true);
+	req.open("GET", "GeneratorForRandomNumbers?" +
+			"TestCases=" + TestCases
+		+ "&MinValue=" + MinValue 
+		+ "&MaxValue=" + MaxValue
+		+ "&TestCaseFlag=" + TestCaseFlag
+		, true);
 	req.send();
 	req.onreadystatechange = function() {
 		if (req.readyState == 4 && req.status == 200)
-			alert(req.responseText);
+			{
+			//alert(req.responseText);
+			document.getElementById("FinalData").innerHTML=req.responseText;
+			}
 	}
 }
 function GeneratorForArray() {
+	 alert("dsds");
 	var TestCases = document.getElementById("TestCasesForArray").value;
 	var ArraySize = document.getElementById("ArraySize").value;
-	var DistinctValue = document
-		.getElementById("DistinctValueForArray").value;
+	var DistinctValue = document.getElementById("DistinctValueForArray").value;
 	var MinValue = document.getElementById("MinValueForArray").value;
 	var MaxValue = document.getElementById("MaxValueForArray").value;
 	var SizeFlag = document.getElementById("SizeFlagForArray").value;
@@ -41,6 +60,3 @@ function GeneratorForArray() {
 	}
 }
 
-$('#buttonid').click(function(){
-	
-})
