@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="Main.js">
 <!--    <script>-->
 <!--        (function(i, s, o, g, r, a, m) {-->
 <!--            i['GoogleAnalyticsObject'] = r;-->
@@ -80,6 +81,9 @@
         }
         ul.share-buttons li {
             display: block;
+        }
+        textarea{
+        white-space:nowrap;
         }
     </style>
 </head>
@@ -158,7 +162,7 @@
                                                 </select>
                                             </div>
                                             <div id="button_container" class="col-xs-6">
-                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left">
+                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left" onclick="GeneratorForRandomNumbers()">
                                                     <div class="text">Generate</div>
                                                 </button>
                                             </div>
@@ -245,7 +249,7 @@
                                            
                                         </div>
                                          <div id="button_container" class="col-md-2">
-                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left">
+                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left" onclick="GeneratorForRandomArray()">
                                                     <div class="text">Generate</div>
                                                 </button>
                                             </div>
@@ -555,7 +559,7 @@
 
                                             </div>
                                             <div id="button_container" class="col-xs-6">
-                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left">
+                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left" onclick="GeneratorForRandomNumbers()">
                                                     <div class="text">Generate</div>
                                                 </button>
                                             </div>
@@ -874,7 +878,7 @@
                         <button class="btn btn-primary pull-right" id="download_as_file"><span class="glyphicon glyphicon-download-alt"></span></button>
                     </div>
                 </div>
-                <textarea class="form-control" cols="10" id="data" rows="15" style="font-family:monospace"></textarea>
+                <textarea id="FinalData"class="form-control" cols="10" id="data" rows="15" style="font-family:monospace"></textarea>
 
                 <div class="alert alert-danger" id="error">
                     <p></p>

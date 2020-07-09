@@ -15,7 +15,8 @@ function GeneratorForRandomNumbers() {
 	var MaxValue = document.getElementById("MaxValueForRandomNumbers").value;
 	var TestCaseFlag = document.getElementById("TTestCaseFlagForRandomNumbers").value;
 	
-	
+	var x="";
+	document.getElementById("FinalData").innerHTML=x;
 	req = new XMLHttpRequest();
 	// Creating Request
 	req.open("GET", "GeneratorForRandomNumbers?" +
@@ -35,7 +36,7 @@ function GeneratorForRandomNumbers() {
 }
 
 function GeneratorForRandomArray() {
-	
+
 	var TestCases = document.getElementById("TestCasesForArray").value;
 	var ArraySize = document.getElementById("ArraySize").value;
 	var DistinctValue = document.getElementById("DistinctValueForArray").value;
@@ -46,7 +47,7 @@ function GeneratorForRandomArray() {
 
 	req = new XMLHttpRequest();
 	// Creating Request
-
+	document.getElementById("FinalData").innerHTML="";
 	req.open("GET", "GeneratorForArray?" 
 		+ "TestCases=" + TestCases
 		+ "&ArraySize=" + ArraySize
