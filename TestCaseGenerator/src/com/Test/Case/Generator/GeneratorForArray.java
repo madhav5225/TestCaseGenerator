@@ -1,6 +1,8 @@
 package com.Test.Case.Generator;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -14,13 +16,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/GeneratorForArray")
 public class GeneratorForArray extends HttpServlet {
-	long TestCases;
-	long ArraySize;
-	String DistinctValue;
-	long MinValue;
-	long MaxValue;
-	String SizeFlag;
-	String TestCasesFlag;
+	private int TestCases;
+	private int ArraySize;
+	private String DistinctValue;
+	private int MinValue;
+	private int MaxValue;
+	private String SizeFlag;
+	private String TestCasesFlag;
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -32,68 +34,105 @@ public class GeneratorForArray extends HttpServlet {
     }
 
 	/**
+	 * @throws IOException 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     
-	String GeneratorForRandomArray()
+	void GeneratorForRandomArray(HttpServletResponse response) throws IOException    // Complexity-O(N*T)
 	{
-		String FinalData="";
+		
 		if(TestCasesFlag.equals("1"))
-		 FinalData+=(TestCases+"\n");
+			response.getWriter().write((TestCases+"\n"));
+	
 		
 		 Random rand=new Random();
 	     for(int i=0;i<TestCases;i++)
 	     {
 	    	
 	     	 if(SizeFlag.equals("1"))
-	    		 FinalData+=(ArraySize+"\n");
+	     		response.getWriter().write(ArraySize+"\n");
+	     	
+	    		
 	    	 for(int j=0;j<ArraySize;j++)
 	    	 {
 	    		 if(j==(ArraySize-1))
-	    			 FinalData+=""+ (MinValue+(Math.abs(rand.nextLong())%(MaxValue-MinValue+1)));
+	    			 response.getWriter().write((rand.nextInt( MaxValue - MinValue+1)+MinValue)+"");     	
 	    		 else
-	    		 FinalData+=""+ (MinValue+(Math.abs(rand.nextLong())%(MaxValue-MinValue+1)))+" ";
-	    	
+	    			 response.getWriter().write((rand.nextInt( MaxValue - MinValue+1)+MinValue)+" ");     	
+	    			
 	    	 }
 	   
-	    	 FinalData+=("\n");
-	    				 
-	    	 
+	 		response.getWriter().write("\n");
+		     
+	    				 	 
 	    }
 		
-		return  FinalData;
+		
 	}
-	String GeneratorForDistinctArray()
+	void GeneratorForDistinctArray(HttpServletResponse response) throws IOException
 	{
-		String FinalData="";
 		
 		
-		return  FinalData;
+		
+		
+		
+		if(TestCasesFlag.equals("1"))
+			response.getWriter().write((TestCases+"\n"));
+	
+		
+		 Random rand=new Random();
+	     for(int i=0;i<TestCases;i++)
+	     {
+	    	
+	     	 if(SizeFlag.equals("1"))
+	     		response.getWriter().write(ArraySize+"\n");
+	     	
+	     	Map<Integer,Integer> mp = new HashMap<>();
+
+	     	while(mp.size()!=ArraySize)
+	     	 {int val=rand.nextInt( MaxValue - MinValue+1)+MinValue;
+	     		if(!mp.containsKey(val))
+	     				{
+	     			     mp.put(val,1);
+	     				 if(mp.size()==(ArraySize))
+	    	    			 response.getWriter().write(val+"");     	
+	    	    		 else
+	    	    			 response.getWriter().write(val+" ");  
+	     				}
+	     	}
+	    	
+	   
+	 		response.getWriter().write("\n");
+	     }
+	    				 	 
+	    				 
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		 TestCases=Long.parseLong(request.getParameter("TestCases"));
-		 ArraySize=Long.parseLong(request.getParameter("ArraySize"));
+		 TestCases=Integer.parseInt(request.getParameter("TestCases"));
+		 ArraySize=Integer.parseInt(request.getParameter("ArraySize"));
 		 DistinctValue=request.getParameter("DistinctValue");
-		 MinValue=Long.parseLong(request.getParameter("MinValue"));
-		 MaxValue=Long.parseLong(request.getParameter("MaxValue"));
+		 MinValue=Integer.parseInt(request.getParameter("MinValue"));
+		 MaxValue=Integer.parseInt(request.getParameter("MaxValue"));
 		 SizeFlag=request.getParameter("SizeFlag");
 	     TestCasesFlag=request.getParameter("TestCasesFlag");
 		
 	     
-	     String FinalData;
+	     response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
+	     response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
+	     //response.getWriter().write();
 		if(DistinctValue.equals("1"))
 		{
-			FinalData=GeneratorForDistinctArray();
+			GeneratorForDistinctArray(response);
+			
 		}
 		else
-			FinalData=GeneratorForRandomArray();
+			GeneratorForRandomArray(response);
+	
 		
 		
-	    response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
-	     response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
-	     response.getWriter().write(FinalData);
+	    
 		
 	}
 

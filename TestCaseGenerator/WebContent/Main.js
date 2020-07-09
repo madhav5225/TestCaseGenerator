@@ -15,7 +15,8 @@ function GeneratorForRandomNumbers() {
 	var MaxValue = document.getElementById("MaxValueForRandomNumbers").value;
 	var TestCaseFlag = document.getElementById("TTestCaseFlagForRandomNumbers").value;
 	
-	
+	var x="";
+	document.getElementById("FinalData").innerHTML=x;
 	req = new XMLHttpRequest();
 	// Creating Request
 	req.open("GET", "GeneratorForRandomNumbers?" +
