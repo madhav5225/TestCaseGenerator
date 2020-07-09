@@ -24,19 +24,8 @@ public class GeneratorForArray extends HttpServlet {
 	private String SizeFlag;
 	private String TestCasesFlag;
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GeneratorForArray() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @throws IOException 
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
     
 	void GeneratorForRandomArray(HttpServletResponse response) throws IOException    // Complexity-O(N*T)
 	{
@@ -66,14 +55,15 @@ public class GeneratorForArray extends HttpServlet {
 		     
 	    				 	 
 	    }
-		
-		
 	}
+		
+	public GeneratorForArray() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	void GeneratorForDistinctArray(HttpServletResponse response) throws IOException
 	{
-		
-		
-		
 		
 		
 		if(TestCasesFlag.equals("1"))
@@ -125,21 +115,21 @@ public class GeneratorForArray extends HttpServlet {
 		if(DistinctValue.equals("1"))
 		{
 			GeneratorForDistinctArray(response);
-			
 		}
 		else
 			GeneratorForRandomArray(response);
-	
-		
-		
-	    
-		
+				
+
 	}
 
+	
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

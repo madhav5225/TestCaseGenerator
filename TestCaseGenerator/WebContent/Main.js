@@ -35,7 +35,7 @@ function GeneratorForRandomNumbers() {
 	}
 }
 
-function GeneratorForArray() {
+function GeneratorForRandomArray() {
 	
 	var TestCases = document.getElementById("TestCasesForArray").value;
 	var ArraySize = document.getElementById("ArraySize").value;
@@ -61,7 +61,7 @@ function GeneratorForArray() {
 	req.onreadystatechange = function() {
 		if (req.readyState == 4 && req.status == 200)
 		{
-			//alert(req.responseText);
+			//alert("how are you");
 			document.getElementById("FinalData").innerHTML=req.responseText;
 			}
 

@@ -1,288 +1,890 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<title>Generate Your Test Case here!!!</title>
-<script src="Main.js"></script>
-<style type="text/css">
-body {
-	padding-top: 5px;
-	font-family: Overpass, -apple-system, BlinkMacSystemFont, "Segoe UI",
-		Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-		sans-serif;
-}
+    <meta charset="UTF-8">
+    <title>Test Case Generator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="Main.js">
+<!--    <script>-->
+<!--        (function(i, s, o, g, r, a, m) {-->
+<!--            i['GoogleAnalyticsObject'] = r;-->
+<!--            i[r] = i[r] || function() {-->
+<!--                (i[r].q = i[r].q || []).push(arguments)-->
+<!--            }, i[r].l = 1 * new Date();-->
+<!--            a = s.createElement(o),-->
+<!--                m = s.getElementsByTagName(o)[0];-->
+<!--            a.async = 1;-->
+<!--            a.src = g;-->
+<!--            m.parentNode.insertBefore(a, m)-->
+<!--        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');-->
 
-.monospace {
-	font-family: monospace;
-}
+<!--        ga('create', 'UA-82298231-1', 'auto');-->
+<!--        ga('send', 'pageview');-->
+<!--    </script>-->
+    <style type="text/css">
+        body {
+            padding-top: 50px;
+            font-family: Overpass, -apple-system,
+            BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+            Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+            sans-serif;
+        }
+        .monospace {
+            font-family: monospace;
+        }
+        input,
+        select {
+            font-family: monospace;
+        }
+        label {
+            margin-top: 15px;
+            padding-left: 5px
+        }
 
-input, select {
-	font-family: monospace;
-}
+        .panel-title > a:hover,
+        a:link,
+        a:visited,
+        a:active {
+            text-decoration: none;
+        }
 
-label {
-	margin-top: 15px;
-	padding-left: 5px
-}
+        #buttonid{
+            margin-top: 10px;
+        }
+        #data {
+            resize: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
 
-.panel-title>a:hover, a:link, a:visited, a:active {
-	text-decoration: none;
-}
+        #error {
+            display: none;
+            margin-top: 10px;
+        }
 
-#data {
-	resize: none;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
+        ul.share-buttons {
+            list-style: none;
+            padding: 0;
+            position: fixed;
+            top:100px;
+            border-top: 2px solid #e0e0e0;
+            border-right: 2px solid #e0e0e0;
+            border-bottom: 2px solid #e0e0e0;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
 
-#error {
-	margin-top: 10px;
-}
-
-ul.share-buttons {
-	list-style: none;
-	padding: 0;
-	position: fixed;
-	top: 100px;
-	border-top: 2px solid #e0e0e0;
-	border-right: 2px solid #e0e0e0;
-	border-bottom: 2px solid #e0e0e0;
-	border-top-right-radius: 4px;
-	border-bottom-right-radius: 4px;
-}
-
-ul.share-buttons li {
-	padding: 6px;
-}
-
-ul.share-buttons li {
-	display: block;
-}
-</style>
+        }
+        ul.share-buttons li{
+            padding: 6px;
+        }
+        ul.share-buttons li {
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-md-7">
-				<div class="tabbable tabs-left">
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs tabs-left" role="tablist">
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="tabbable tabs-left">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs tabs-left" role="tablist">
 
-					<li role="presentation" data-type="module"
-						data-module-name="number" class=active><a
-						aria-controls="home" data-toggle="tab" href="#number" role="tab">Number</a>
-					</li>
+                    <li role="presentation" data-type="module" data-module-name="number" class=active>
+                        <a aria-controls="home" data-toggle="tab" href="#number" role="tab">Number</a>
+                    </li>
 
-					<li role="presentation" data-type="module" data-module-name="array">
-						<a aria-controls="home" data-toggle="tab" href="#array" role="tab">Array</a>
-					</li>
+                    <li role="presentation" data-type="module" data-module-name="array" >
+                        <a aria-controls="home" data-toggle="tab" href="#array" role="tab">Array</a>
+                    </li>
 
-					</ul>
-					<div class="tab-content">
+                    <li role="presentation" data-type="module" data-module-name="string" >
+                        <a aria-controls="home" data-toggle="tab" href="#string" role="tab">String</a>
+                    </li>
 
-						<div role="tabpanel" class="tab-pane active" id="number">
-							<div class="panel-group" id="accordion_number" role="tablist"
-								aria-multiselectable="true">
+<!--                    <li role="presentation" data-type="module" data-module-name="tree" >-->
+<!--                        <a aria-controls="home" data-toggle="tab" href="#tree" role="tab">Tree</a>-->
+<!--                    </li>-->
 
-								<br>
-								<div class="panel panel-default">
-									<div class="panel-heading" role="tab"
-										id="heading_number_random_number">
-										<h4 class="panel-title">
+<!--                    <li role="presentation" data-type="module" data-module-name="graph" >-->
+<!--                        <a aria-controls="home" data-toggle="tab" href="#graph" role="tab">Graph</a>-->
+<!--                    </li>-->
 
-											<a role="button" data-toggle="collapse"
-												data-parent="#accordion_number" href="#number_random_number"
-												aria-expanded="false" aria-controls="number_random_number"
-												class="accordion-toggle"> Random Number </a><span
-												class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-										</h4>
-									</div>
-									<div id="number_random_number" class="panel-collapse collapse"
-										aria-expanded="false" role="tabpanel"
-										aria-labelledby="#number_random_number" data-type="function"
-										data-function-name="random_number">
-										<div class="panel-body">
-											<div class="row">
+                </ul>
+                <div class="tab-content">
 
-												<div class="col-xs-6">
+                    <div role="tabpanel" class="tab-pane active" id="number">
+                        <div class="panel-group" id="accordion_number" role="tablist" aria-multiselectable="true">
 
-													<label>N Test Cases</label> <input type="text"
-														class="form-control" id="TestCasesForRandomNumbers"
-														placeholder="n_test_cases" data-type="param"
-														data-param-name="n_test_cases">
-												</div>
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading_number_random_number">
+                                    <h4 class="panel-title">
+                                            <a role="button" data-toggle="collapse" data-parent="#accordion_number" href="#number_random_number" aria-expanded="false"  aria-controls="number_random_number" class="accordion-toggle">
+                                                Random Number
+                                            </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
+                                    </h4>
+                                </div>
+                                <div id="number_random_number" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#number_random_number" data-type="function" data-function-name="random_number">
+                                    <div class="panel-body"  id="holder">
+                                        <div class="row">
 
-												<div class="col-xs-6">
+                                            <div class="col-xs-6">
 
-													<label>Min Value</label> <input type="text"
-														class="form-control" id="MinValueForRandomNumbers"
-														placeholder="min_value" data-type="param"
-														data-param-name="min_value">
-												</div>
+                                                <label>N Test Cases</label>
+                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">
+                                            </div>
 
-												<div class="col-xs-6">
+                                            <div class="col-xs-6">
 
-													<label>Max Value</label> <input type="text"
-														class="form-control" id="MaxValueForRandomNumbers"
-														placeholder="max_value" data-type="param"
-														data-param-name="max_value">
-												</div>
+                                                <label>Min Value</label>
+                                                <input type="text" class="form-control" placeholder="min_value" data-type="param" data-param-name="min_value">
+                                            </div>
 
-												<div class="col-xs-6">
+                                            <div class="col-xs-6">
 
-													<label>Include N Test Cases Flag</label> <select
-														id="TTestCaseFlagForRandomNumbers" data-type="param"
-														data-param-name="include_n_test_cases_flag"
-														class="form-control">
-														<option value="0">False</option>
-														<option value="1">True</option>
-													</select>
+                                                <label>Max Value</label>
+                                                <input type="text" class="form-control" placeholder="max_value" data-type="param" data-param-name="max_value">
+                                            </div>
 
-												</div>
+                                            <div class="col-xs-6">
 
-											</div>
-										</div>
+                                                <label>Include N Test Cases Flag</label>
+                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
+                                            </div>
+                                            <div id="button_container" class="col-xs-6">
+                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left" onclick="GeneratorForRandomNumbers()">
+                                                    <div class="text">Generate</div>
+                                                </button>
+                                            </div>
+                                        </div>
 
-										<div id="button_container" class="clearfix">
-											<button type="button" onclick="GeneratorForRandomNumbers()"
-												class="btn btn-success btn-lg pull-left">Generate</button>
-										</div>
-									</div>
-								</div>
+                                    </div>
 
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane" id="array">
-							<div class="panel-group" id="accordion_array" role="tablist"
-								aria-multiselectable="true">
+                                </div>
+                            </div>
 
-								<br>
-								<div class="panel panel-default">
-									<div class="panel-heading" role="tab"
-										id="heading_array_random_array">
-										<h4 class="panel-title">
+                        </div>
+                    </div>
 
-											<a role="button" data-toggle="collapse"
-												data-parent="#accordion_array" href="#array_random_array"
-												aria-expanded="false" aria-controls="array_random_array"
-												class="accordion-toggle"> Random Array </a><span
-												class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-										</h4>
-									</div>
-									<div id="array_random_array" class="panel-collapse collapse"
-										aria-expanded="false" role="tabpanel"
-										aria-labelledby="#array_random_array" data-type="function"
-										data-function-name="random_array">
-										<div class="panel-body">
-											<div class="row">
+                    <div role="tabpanel" class="tab-pane" id="array">
+                        <div class="panel-group" id="accordion_array" role="tablist" aria-multiselectable="true">
 
-												<div class="col-xs-6">
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading_array_random_array">
+                                    <h4 class="panel-title">
 
-													<label>N Test Cases</label> <input type="text"  id="TestCasesForArray"
-														class="form-control" placeholder="n_test_cases"
-														data-type="param" data-param-name="n_test_cases">
-												</div>
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion_array" href="#array_random_array" aria-expanded="false"  aria-controls="array_random_array" class="accordion-toggle">
+                                            Random Array
+                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
+                                    </h4>
+                                </div>
+                                <div id="array_random_array" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#array_random_array" data-type="function" data-function-name="random_array">
+                                    <div class="panel-body">
+                                        <div class="row">
 
-												<div class="col-xs-6">
+                                            <div class="col-xs-6">
 
-													<label>Arr Size</label> <input type="text" id="ArraySize" 
-														class="form-control" placeholder="arr_size"
-														data-type="param" data-param-name="arr_size">
-												</div>
+                                                <label>N Test Cases</label>
+                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">
+                                            </div>
 
-												<div class="col-xs-6">
+                                            <div class="col-xs-6">
 
-													<label>Distinct Value Flag</label> <select id="DistinctValueForArray"
-														data-type="param" data-param-name="distinct_value_flag"
-														class="form-control">
-														<option value="0">False</option>
-														<option value="1">True</option>
-													</select>
+                                                <label>Arr Size</label>
+                                                <input type="text" class="form-control" placeholder="arr_size" data-type="param" data-param-name="arr_size">
+                                            </div>
 
-												</div>
+                                            <div class="col-xs-6">
 
-												<div class="col-xs-6">
+                                                <label>Distinct Value Flag</label>
+                                                <select data-type="param" data-param-name="distinct_value_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
 
-													<label>Min Value</label> <input type="text" id="MinValueForArray" 
-														class="form-control" placeholder="min_value"
-														data-type="param" data-param-name="min_value">
-												</div>
+                                            </div>
 
-												<div class="col-xs-6">
+                                            <div class="col-xs-6">
 
-													<label>Max Value</label> <input type="text" id="MaxValueForArray" 
-														class="form-control" placeholder="max_value"
-														data-type="param" data-param-name="max_value">
-												</div>
+                                                <label>Min Value</label>
+                                                <input type="text" class="form-control" placeholder="min_value" data-type="param" data-param-name="min_value">
+                                            </div>
 
-												<div class="col-xs-6">
+                                            <div class="col-xs-6">
 
-													<label>Include N Flag</label> <select data-type="param" id="SizeFlagForArray"
-														data-param-name="include_n_flag" class="form-control">
-														<option value="0">False</option>
-														<option value="1">True</option>
-													</select>
+                                                <label>Max Value</label>
+                                                <input type="text" class="form-control" placeholder="max_value" data-type="param" data-param-name="max_value">
+                                            </div>
 
-												</div>
+                                            <div class="col-xs-6">
 
-												<div class="col-xs-6">
+                                                <label>Include N Flag</label>
+                                                <select data-type="param" data-param-name="include_n_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
 
-													<label>Include N Test Cases Flag</label> <select  id="TestCasesFlagForArray"
-														data-type="param"
-														data-param-name="include_n_test_cases_flag"
-														class="form-control">
-														<option value="0">False</option>
-														<option value="1">True</option>
-													</select>
-												</div>
-											</div>
-										</div>
-										<div id="button_container" class="clearfix">
-											<button type="button" onclick="GeneratorForArray()"
-												class="btn btn-success btn-lg pull-left">Generate Array</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Tab panes -->
-				</div>
-			</div>
-			<div class="col-md-5">
-				<div>
-					<div class="clearfix">
-						<div class="pull-right">
-							<button class="btn btn-primary pull-right" id="download_as_file">
-								<span class="glyphicon glyphicon-download-alt"></span>
-							</button>
-						</div>
-					</div>
-					<textarea id="FinalData" class="form-control" cols="10" id="data"
-						rows="15" style="font-family: monospace"></textarea>
+                                            </div>
 
-					<div class="alert alert-danger" id="error">
-						<p></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
+                                            <div class="col-xs-6">
 
-	<!-- For Pulling Data From Servlets  -->
+                                                <label>Include N Test Cases Flag</label>
+                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
 
+                                            </div>
+                                           
+                                        </div>
+                                         <div id="button_container" class="col-md-2">
+                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left">
+                                                    <div class="text">Generate</div>
+                                                </button>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
 
+<!--                            <br>-->
+<!--                            <div class="panel panel-default">-->
+<!--                                <div class="panel-heading" role="tab" id="heading_array_random_array_pairs">-->
+<!--                                    <h4 class="panel-title">-->
+
+<!--                                        <a role="button" data-toggle="collapse" data-parent="#accordion_array" href="#array_random_array_pairs" aria-expanded="false"  aria-controls="array_random_array_pairs" class="accordion-toggle">-->
+<!--                                            Random Array Pairs-->
+<!--                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <div id="array_random_array_pairs" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#array_random_array_pairs" data-type="function" data-function-name="random_array_pairs">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <div class="row">-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Test Cases</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Pairs</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_pairs" data-type="param" data-param-name="n_pairs">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Distinct Pairs Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="distinct_pairs_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Min First Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="min_first_value" data-type="param" data-param-name="min_first_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Max First Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="max_first_value" data-type="param" data-param-name="max_first_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Min Second Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="min_second_value" data-type="param" data-param-name="min_second_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Max Second Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="max_second_value" data-type="param" data-param-name="max_second_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>A B Order</label>-->
+<!--                                                <select data-type="param" data-param-name="a_b_order" class="form-control">-->
+<!--                                                    <option value="rand">Random</option>-->
+<!--                                                    <option value="inc">Increasing</option>-->
+<!--                                                    <option value="nondec">Non-Decreasing</option>-->
+<!--                                                    <option value="dec">Decreasing</option>-->
+<!--                                                    <option value="noninc">Non-Increasing</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N Test Cases Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <br>-->
+<!--                            <div class="panel panel-default">-->
+<!--                                <div class="panel-heading" role="tab" id="heading_array_random_matrix">-->
+<!--                                    <h4 class="panel-title">-->
+
+<!--                                        <a role="button" data-toggle="collapse" data-parent="#accordion_array" href="#array_random_matrix" aria-expanded="false"  aria-controls="array_random_matrix" class="accordion-toggle">-->
+<!--                                            Random Matrix-->
+<!--                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <div id="array_random_matrix" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#array_random_matrix" data-type="function" data-function-name="random_matrix">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <div class="row">-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Test Cases</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Num Rows</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="num_rows" data-type="param" data-param-name="num_rows">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Num Cols</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="num_cols" data-type="param" data-param-name="num_cols">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Min Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="min_value" data-type="param" data-param-name="min_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Max Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="max_value" data-type="param" data-param-name="max_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Distinct Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="distinct_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N M Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_m_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="string">
+                        <div class="panel-group" id="accordion_string" role="tablist" aria-multiselectable="true">
+
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading_string_random_string">
+                                    <h4 class="panel-title">
+
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion_string" href="#string_random_string" aria-expanded="false"  aria-controls="string_random_string" class="accordion-toggle">
+                                            Random String
+                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
+                                    </h4>
+                                </div>
+                                <div id="string_random_string" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#string_random_string" data-type="function" data-function-name="random_string">
+                                    <div class="panel-body">
+                                        <div class="row">
+
+                                            <div class="col-xs-6">
+
+                                                <label>N Test Cases</label>
+                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Str Size</label>
+                                                <input type="text" class="form-control" placeholder="str_size" data-type="param" data-param-name="str_size">
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Distinct Chars Flag</label>
+                                                <select data-type="param" data-param-name="distinct_chars_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Chars</label>
+                                                <input type="text" class="form-control" placeholder="chars" data-type="param" data-param-name="chars">
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Include N Flag</label>
+                                                <select data-type="param" data-param-name="include_n_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Include N Test Cases Flag</label>
+                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
+
+                                            </div>
+                                            <div id="button_container" class="col-xs-5">
+                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left">
+                                                    <div class="text">Generate</div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading_string_random_char_matrix">
+                                    <h4 class="panel-title">
+
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion_string" href="#string_random_char_matrix" aria-expanded="false"  aria-controls="string_random_char_matrix" class="accordion-toggle">
+                                            Random Char Matrix
+                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
+                                    </h4>
+                                </div>
+                                <div id="string_random_char_matrix" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#string_random_char_matrix" data-type="function" data-function-name="random_char_matrix">
+                                    <div class="panel-body">
+                                        <div class="row">
+
+                                            <div class="col-xs-6">
+
+                                                <label>N Test Cases</label>
+                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Num Rows</label>
+                                                <input type="text" class="form-control" placeholder="num_rows" data-type="param" data-param-name="num_rows">
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Num Cols</label>
+                                                <input type="text" class="form-control" placeholder="num_cols" data-type="param" data-param-name="num_cols">
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Chars</label>
+                                                <input type="text" class="form-control" placeholder="chars" data-type="param" data-param-name="chars">
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Include N M Flag</label>
+                                                <select data-type="param" data-param-name="include_n_m_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-xs-6">
+
+                                                <label>Include N Test Cases Flag</label>
+                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
+
+                                            </div>
+                                            <div id="button_container" class="col-xs-6">
+                                                <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left">
+                                                    <div class="text">Generate</div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+<!--                    <div role="tabpanel" class="tab-pane" id="tree">-->
+<!--                        <div class="panel-group" id="accordion_tree" role="tablist" aria-multiselectable="true">-->
+
+<!--                            <br>-->
+<!--                            <div class="panel panel-default">-->
+<!--                                <div class="panel-heading" role="tab" id="heading_tree_random_unweighted_tree">-->
+<!--                                    <h4 class="panel-title">-->
+
+<!--                                        <a role="button" data-toggle="collapse" data-parent="#accordion_tree" href="#tree_random_unweighted_tree" aria-expanded="false"  aria-controls="tree_random_unweighted_tree" class="accordion-toggle">-->
+<!--                                            Random Unweighted Tree-->
+<!--                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <div id="tree_random_unweighted_tree" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#tree_random_unweighted_tree" data-type="function" data-function-name="random_unweighted_tree">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <div class="row">-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Test Cases</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Nodes</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_nodes" data-type="param" data-param-name="n_nodes">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Indexed From</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="indexed_from" data-type="param" data-param-name="indexed_from">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N Nodes Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_nodes_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N Test Cases Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <br>-->
+<!--                            <div class="panel panel-default">-->
+<!--                                <div class="panel-heading" role="tab" id="heading_tree_random_weighted_tree">-->
+<!--                                    <h4 class="panel-title">-->
+
+<!--                                        <a role="button" data-toggle="collapse" data-parent="#accordion_tree" href="#tree_random_weighted_tree" aria-expanded="false"  aria-controls="tree_random_weighted_tree" class="accordion-toggle">-->
+<!--                                            Random Weighted Tree-->
+<!--                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <div id="tree_random_weighted_tree" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#tree_random_weighted_tree" data-type="function" data-function-name="random_weighted_tree">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <div class="row">-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Test Cases</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Nodes</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_nodes" data-type="param" data-param-name="n_nodes">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Indexed From</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="indexed_from" data-type="param" data-param-name="indexed_from">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Weight Min Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="weight_min_value" data-type="param" data-param-name="weight_min_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Weight Max Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="weight_max_value" data-type="param" data-param-name="weight_max_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N Nodes Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_nodes_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N Test Cases Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div role="tabpanel" class="tab-pane" id="graph">-->
+<!--                        <div class="panel-group" id="accordion_graph" role="tablist" aria-multiselectable="true">-->
+
+<!--                            <br>-->
+<!--                            <div class="panel panel-default">-->
+<!--                                <div class="panel-heading" role="tab" id="heading_graph_random_unweighted_graph">-->
+<!--                                    <h4 class="panel-title">-->
+
+<!--                                        <a role="button" data-toggle="collapse" data-parent="#accordion_graph" href="#graph_random_unweighted_graph" aria-expanded="false"  aria-controls="graph_random_unweighted_graph" class="accordion-toggle">-->
+<!--                                            Random Unweighted Graph-->
+<!--                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <div id="graph_random_unweighted_graph" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#graph_random_unweighted_graph" data-type="function" data-function-name="random_unweighted_graph">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <div class="row">-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Test Cases</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Nodes</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_nodes" data-type="param" data-param-name="n_nodes">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Edges</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_edges" data-type="param" data-param-name="n_edges">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Indexed From</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="indexed_from" data-type="param" data-param-name="indexed_from">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N E Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_e_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Is Directed Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="is_directed_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N Test Cases Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            <br>-->
+<!--                            <div class="panel panel-default">-->
+<!--                                <div class="panel-heading" role="tab" id="heading_graph_random_weighted_graph">-->
+<!--                                    <h4 class="panel-title">-->
+
+<!--                                        <a role="button" data-toggle="collapse" data-parent="#accordion_graph" href="#graph_random_weighted_graph" aria-expanded="false"  aria-controls="graph_random_weighted_graph" class="accordion-toggle">-->
+<!--                                            Random Weighted Graph-->
+<!--                                        </a><span class="indicator glyphicon glyphicon-chevron-right pull-right"></span>-->
+<!--                                    </h4>-->
+<!--                                </div>-->
+<!--                                <div id="graph_random_weighted_graph" class="panel-collapse collapse" aria-expanded="false" role="tabpanel" aria-labelledby="#graph_random_weighted_graph" data-type="function" data-function-name="random_weighted_graph">-->
+<!--                                    <div class="panel-body">-->
+<!--                                        <div class="row">-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Test Cases</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Nodes</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_nodes" data-type="param" data-param-name="n_nodes">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>N Edges</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="n_edges" data-type="param" data-param-name="n_edges">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Indexed From</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="indexed_from" data-type="param" data-param-name="indexed_from">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Weight Min Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="weight_min_value" data-type="param" data-param-name="weight_min_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Weight Max Value</label>-->
+<!--                                                <input type="text" class="form-control" placeholder="weight_max_value" data-type="param" data-param-name="weight_max_value">-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N E Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_e_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Is Directed Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="is_directed_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                            <div class="col-xs-6">-->
+
+<!--                                                <label>Include N Test Cases Flag</label>-->
+<!--                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">-->
+<!--                                                    <option value="0">False</option>-->
+<!--                                                    <option value="1">True</option>-->
+<!--                                                </select>-->
+
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+<!--                    </div>-->
+
+                </div>
+                <!-- Tab panes -->
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div>
+                <div class="clearfix">
+                    <div class="pull-right">
+                        <button class="btn btn-primary pull-right" id="download_as_file"><span class="glyphicon glyphicon-download-alt"></span></button>
+                    </div>
+                </div>
+                <textarea class="form-control" cols="10" id="data" rows="15" style="font-family:monospace"></textarea>
+
+                <div class="alert alert-danger" id="error">
+                    <p></p>
+                </div>
+                <button class="btn btn-warning" id="reset_textarea" type="reset">Reset</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

@@ -15,25 +15,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/GeneratorForRandomNumbers")
 public class GeneratorForRandomNumbers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GeneratorForRandomNumbers() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int TestCases=Integer.parseInt(request.getParameter("TestCases"));
 		int MinValue=Integer.parseInt(request.getParameter("MinValue"));
 		int MaxValue=Integer.parseInt(request.getParameter("MaxValue"));
 		String TestCaseFlag=(request.getParameter("TestCaseFlag"));
 		
-		 
+		 System.out.println(MinValue);
 	     Random rand=new Random();
 	     
 	     response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
@@ -52,13 +42,15 @@ public class GeneratorForRandomNumbers extends HttpServlet {
 	     }
 	 
 	     
-	     
+	
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
