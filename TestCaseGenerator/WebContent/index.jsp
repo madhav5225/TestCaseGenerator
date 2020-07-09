@@ -135,25 +135,25 @@
                                             <div class="col-xs-6">
 
                                                 <label>N Test Cases</label>
-                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">
+                                                <input type="text" class="form-control" id="TestCasesForRandomNumbers" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">
                                             </div>
 
                                             <div class="col-xs-6">
 
                                                 <label>Min Value</label>
-                                                <input type="text" class="form-control" placeholder="min_value" data-type="param" data-param-name="min_value">
+                                                <input type="text" class="form-control" id="MinValueForRandomNumbers" placeholder="min_value" data-type="param" data-param-name="min_value">
                                             </div>
 
                                             <div class="col-xs-6">
 
                                                 <label>Max Value</label>
-                                                <input type="text" class="form-control" placeholder="max_value" data-type="param" data-param-name="max_value">
+                                                <input type="text" class="form-control" id="MaxValueForRandomNumbers" placeholder="max_value" data-type="param" data-param-name="max_value">
                                             </div>
 
                                             <div class="col-xs-6">
 
                                                 <label>Include N Test Cases Flag</label>
-                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">
+                                                <select data-type="param" data-param-name="include_n_test_cases_flag" id="TTestCaseFlagForRandomNumbers" class="form-control">
                                                     <option value="0">False</option>
                                                     <option value="1">True</option>
                                                 </select>
@@ -193,19 +193,19 @@
                                             <div class="col-xs-6">
 
                                                 <label>N Test Cases</label>
-                                                <input type="text" class="form-control" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">
+                                                <input type="text" class="form-control" id="TestCasesForArray" placeholder="n_test_cases" data-type="param" data-param-name="n_test_cases">
                                             </div>
 
                                             <div class="col-xs-6">
 
                                                 <label>Arr Size</label>
-                                                <input type="text" class="form-control" placeholder="arr_size" data-type="param" data-param-name="arr_size">
+                                                <input type="text" class="form-control" id="ArraySize" placeholder="arr_size" data-type="param" data-param-name="arr_size">
                                             </div>
 
                                             <div class="col-xs-6">
 
                                                 <label>Distinct Value Flag</label>
-                                                <select data-type="param" data-param-name="distinct_value_flag" class="form-control">
+                                                <select data-type="param" data-param-name="distinct_value_flag" id="DistinctValueForArray" class="form-control">
                                                     <option value="0">False</option>
                                                     <option value="1">True</option>
                                                 </select>
@@ -215,19 +215,19 @@
                                             <div class="col-xs-6">
 
                                                 <label>Min Value</label>
-                                                <input type="text" class="form-control" placeholder="min_value" data-type="param" data-param-name="min_value">
+                                                <input type="text" class="form-control" placeholder="min_value" id="MinValueForArray" data-type="param" data-param-name="min_value">
                                             </div>
 
                                             <div class="col-xs-6">
 
                                                 <label>Max Value</label>
-                                                <input type="text" class="form-control" placeholder="max_value" data-type="param" data-param-name="max_value">
+                                                <input type="text" class="form-control" placeholder="max_value" id="MaxValueForArray" data-type="param" data-param-name="max_value">
                                             </div>
 
                                             <div class="col-xs-6">
 
                                                 <label>Include N Flag</label>
-                                                <select data-type="param" data-param-name="include_n_flag" class="form-control">
+                                                <select data-type="param" data-param-name="include_n_flag" id="SizeFlagForArray" class="form-control">
                                                     <option value="0">False</option>
                                                     <option value="1">True</option>
                                                 </select>
@@ -237,7 +237,7 @@
                                             <div class="col-xs-6">
 
                                                 <label>Include N Test Cases Flag</label>
-                                                <select data-type="param" data-param-name="include_n_test_cases_flag" class="form-control">
+                                                <select data-type="param" data-param-name="include_n_test_cases_flag" id="TestCasesFlagForArray" class="form-control">
                                                     <option value="0">False</option>
                                                     <option value="1">True</option>
                                                 </select>
