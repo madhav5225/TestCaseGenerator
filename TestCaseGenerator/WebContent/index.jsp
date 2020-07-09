@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="Main.js">
+    <script src="Main.js"></script>
 <!--    <script>-->
 <!--        (function(i, s, o, g, r, a, m) {-->
 <!--            i['GoogleAnalyticsObject'] = r;-->
@@ -50,7 +52,7 @@
             text-decoration: none;
         }
 
-        #buttonid{
+        button{
             margin-top: 10px;
         }
         #data {
@@ -248,11 +250,11 @@
                                             </div>
                                            
                                         </div>
-                                         <div id="button_container" class="col-md-2">
+                                         <div id="button_container" class="col-mr-2">
                                                 <button type="button" id="buttonid" class="btn btn-success btn-lg pull-left" onclick="GeneratorForRandomArray()">
                                                     <div class="text">Generate</div>
                                                 </button>
-                                            </div>
+                                         </div>
                                     </div>
                                 </div>
                             </div>
