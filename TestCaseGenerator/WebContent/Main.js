@@ -36,7 +36,7 @@ function GeneratorForRandomNumbers() {
 }
 
 function GeneratorForRandomArray() {
-	
+
 	var TestCases = document.getElementById("TestCasesForArray").value;
 	var ArraySize = document.getElementById("ArraySize").value;
 	var DistinctValue = document.getElementById("DistinctValueForArray").value;
@@ -47,7 +47,7 @@ function GeneratorForRandomArray() {
 
 	req = new XMLHttpRequest();
 	// Creating Request
-
+	document.getElementById("FinalData").innerHTML="";
 	req.open("GET", "GeneratorForArray?" 
 		+ "TestCases=" + TestCases
 		+ "&ArraySize=" + ArraySize

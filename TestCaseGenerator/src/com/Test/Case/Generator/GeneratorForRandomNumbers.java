@@ -23,7 +23,7 @@ public class GeneratorForRandomNumbers extends HttpServlet {
 		int MaxValue=Integer.parseInt(request.getParameter("MaxValue"));
 		String TestCaseFlag=(request.getParameter("TestCaseFlag"));
 		
-		 System.out.println(MinValue);
+		// System.out.println(MinValue);
 	     Random rand=new Random();
 	     
 	     response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.

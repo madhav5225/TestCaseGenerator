@@ -57,10 +57,7 @@ public class GeneratorForArray extends HttpServlet {
 	    }
 	}
 		
-	public GeneratorForArray() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	void GeneratorForDistinctArray(HttpServletResponse response) throws IOException
 	{
@@ -107,7 +104,7 @@ public class GeneratorForArray extends HttpServlet {
 		 MaxValue=Integer.parseInt(request.getParameter("MaxValue"));
 		 SizeFlag=request.getParameter("SizeFlag");
 	     TestCasesFlag=request.getParameter("TestCasesFlag");
-		
+		System.out.println(MaxValue);
 	     
 	     response.setContentType("text/plain");  // Set content type of the response so that jQuery knows what it can expect.
 	     response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
