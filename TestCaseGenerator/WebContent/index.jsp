@@ -515,9 +515,9 @@
                                         <div class="row">
 
                                             <div class="col-xs-6">
-
-                                                <label>N Test Cases</label>
-                                                <input type="text" class="form-control" placeholder="n_test_cases"
+                                              
+                                                <label>T Test Cases</label>
+                                                <input id="TestCasesForString" type="text" class="form-control" placeholder="T_test_cases"
                                                        data-type="param"
                                                        data-param-name="n_test_cases">
                                             </div>
@@ -525,25 +525,35 @@
                                             <div class="col-xs-6">
 
                                                 <label>String Length</label>
-                                                <input type="text" class="form-control" placeholder="str_size"
+                                                <input id="StringSize" type="text" class="form-control" placeholder="str_size"
                                                        data-type="param" data-param-name="str_size">
                                             </div>
 
                                             <div class="col-xs-6">
 
                                                 <label>No. of Strings per Test Case</label>
-                                                <input type="text" class="form-control" placeholder="n_of_str"
+                                                <input id="NumberOfStringsPerT" type="text" class="form-control" placeholder="n_of_str"
                                                        data-type="param" data-param-name="str_size">
+                                             </div>
+                                           <div class="col-xs-6">
+                                                <label>Distinct Char Flag</label>
+                                                <select id="DistinctValueForString" data-type="param" data-param-name="distinct_char_flag"
+                                                        class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
 
                                             </div>
 
                                             <div class="col-xs-6">
                                                 <div class="form-group">
                                                     <label for="self1">Chars</label>
-                                                    <select class="form-control" id="self1">
+                                                    <select id="StringChars" class="form-control" id="self1">
+                                                         
                                                         <option value="1">A-Z</option>
                                                         <option value="2">a-z</option>
                                                         <option value="3">A-z,a-z</option>
+                                                        <option value="0">Custom</option>
                                                     </select>
                                                 </div>
 
@@ -552,15 +562,25 @@
                                             <div class="col-xs-6">
 
                                                 <label>Extra Chars</label>
-                                                <input class="form-control" placeholder="extras" data-type="param"
+                                                <input id="StringExtraChars" class="form-control" placeholder="extras" data-type="param"
                                                        type="text">
 
                                             </div>
 
                                             <div class="col-xs-6">
 
-                                                <label>Include N Test Cases Flag</label>
-                                                <select data-type="param" data-param-name="include_n_test_cases_flag"
+                                                <label>Include T Test Cases Flag</label>
+                                                <select id="TestCasesFlagForString" data-type="param" data-param-name="include_T_test_cases_flag"
+                                                        class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
+
+                                            </div>
+                                                 <div class="col-xs-6">
+
+                                                <label>Include N Size Flag</label>
+                                                <select id="SizeFlagForString" data-type="param" data-param-name="include_n_size_flag"
                                                         class="form-control">
                                                     <option value="0">False</option>
                                                     <option value="1">True</option>
@@ -569,6 +589,7 @@
                                             </div>
                                             <div id="button_container" class="col-xs-5">
                                                 <button type="button" id="buttonid"
+                                                onclick="GeneratorForRandomString()"
                                                         class="btn btn-success btn-lg pull-left">
                                                     <div class="text">Generate</div>
                                                 </button>
