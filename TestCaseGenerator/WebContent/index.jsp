@@ -454,33 +454,33 @@
 
                                             <div class="col-xs-6">
 
-                                                <label>Str Size</label>
+                                                <label>String Length</label>
                                                 <input type="text" class="form-control" placeholder="str_size" data-type="param" data-param-name="str_size">
                                             </div>
 
                                             <div class="col-xs-6">
 
-                                                <label>Distinct Chars Flag</label>
-                                                <select data-type="param" data-param-name="distinct_chars_flag" class="form-control">
-                                                    <option value="0">False</option>
-                                                    <option value="1">True</option>
-                                                </select>
+                                                <label>No. of Strings per Test Case</label>
+                                                <input type="text" class="form-control" placeholder="n_of_str" data-type="param" data-param-name="str_size">
+
+                                            </div>
+
+                                            <div class="col-xs-6">
+                                                    <div class="form-group">
+                                                        <label for="self1">Chars</label>
+                                                        <select class="form-control" id="self1">
+                                                            <option value="1">A-Z</option>
+                                                            <option value="2">a-z</option>
+                                                            <option value="3">A-z,a-z</option>
+                                                        </select>
+                                                    </div>
 
                                             </div>
 
                                             <div class="col-xs-6">
 
-                                                <label>Chars</label>
-                                                <input type="text" class="form-control" placeholder="chars" data-type="param" data-param-name="chars">
-                                            </div>
-
-                                            <div class="col-xs-6">
-
-                                                <label>Include N Flag</label>
-                                                <select data-type="param" data-param-name="include_n_flag" class="form-control">
-                                                    <option value="0">False</option>
-                                                    <option value="1">True</option>
-                                                </select>
+                                                <label>Extra Chars</label>
+                                                <input class="form-control" placeholder="extras" data-type="param" type="text">
 
                                             </div>
 
