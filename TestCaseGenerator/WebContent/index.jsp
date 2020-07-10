@@ -24,16 +24,36 @@
 <!-- a.src = g;-->
 <!-- m.parentNode.insertBefore(a, m)-->
 <!-- })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');-->
-
 <!-- ga('create', 'UA-82298231-1', 'auto');-->
 <!-- ga('send', 'pageview');-->
+
+<!-- Fb Plugins for Comments -->
 <!-- </script>-->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+	src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0"
+	nonce="HH1fdzDp"></script>
+
+
 <style type="text/css">
 body {
 	padding-top: 50px;
 	font-family: Overpass, -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
 		sans-serif;
+}
+
+input, select {
+	font-family: monospace;
+}
+
+label {
+	margin-top: 15px;
+	padding-left: 5px
+}
+
+.panel-title>a:hover, a:link, a:visited, a:active {
+	text-decoration: none;
 }
 
 input, select {
@@ -569,11 +589,11 @@ textarea {
 												</div>
 											</div>
 											<div id="button_container">
-													<button type="button" id="buttonid"
-														onclick="GeneratorForRandomString()"
-														class="btn btn-success btn-lg pull-left">
-														<div class="text">Generate</div>
-													</button>
+												<button type="button" id="buttonid"
+													onclick="GeneratorForRandomString()"
+													class="btn btn-success btn-lg pull-left">
+													<div class="text">Generate</div>
+												</button>
 											</div>
 										</div>
 									</div>
@@ -1007,7 +1027,7 @@ textarea {
 						rows="15" style="font-family: monospace"></textarea>
 
 					<div class="alert alert-warning" id="error">
-						<p id ="error_box"></p>
+						<p id="error_box"></p>
 					</div>
 					<button class="btn btn-warning" id="reset_textarea" type="reset">Reset</button>
 				</div>
@@ -1025,6 +1045,7 @@ textarea {
 					<div class="card-body text-center">
 						<h5 class="card-title">Jatin Garg</h5>
 						<p class="card-text">Some quick</p>
+
 
 					</div>
 					<a href="https://www.github.com/jatin-773762">
@@ -1052,6 +1073,10 @@ textarea {
 			</div>
 		</div>
 	</div>
-
+	<!-- Add this to place where u want to show comments -->
+	<div class="fb-comments"
+		data-href="http://localhost:8082/TestCaseGenerator/index.jsp"
+		data-numposts="5" data-width=""></div>
+	<!--  -->
 </body>
 </html>

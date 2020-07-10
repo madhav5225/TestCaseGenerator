@@ -5,6 +5,14 @@ function FunctionSelector(x) {
 	}
 
 }
+FB.api(
+	    "/{comment-id}",
+	    function (response) {
+	      if (response && !response.error) {
+	        /* handle the result */
+	      }
+	    }
+	);
 
 function GeneratorForRandomNumbers() {
 
@@ -75,6 +83,7 @@ function GeneratorForRandomString() {
 	var StringExtraChars = document.getElementById("StringExtraChars").value;
 	var SizeFlag = document.getElementById("SizeFlagForString").value;
 	var TestCasesFlag = document.getElementById("TestCasesFlagForString").value;
+
 	var x = StringSize;
 	if (DistinctValue == 1 && (StringChars == 1 || StringChars == 2) && x - 26 > StringExtraChars.length) {
 		x = x - 26 - StringExtraChars.length;
@@ -88,7 +97,7 @@ function GeneratorForRandomString() {
 		document.getElementById("error").style.display = "block";
 		document.getElementById("error_box").innerHTML = "please add " + x + " extra chars";
 	}
-	else if (DistinctValue == 1 && StringChars == 4 && StringExtraChars.length < StringSize) {
+	else if (DistinctValue == 1 && StringChars == 0 && StringExtraChars.length < StringSize) {
 		x = x - StringExtraChars.length;
 		document.getElementById("error").style.display = "block";
 		document.getElementById("error_box").innerHTML = "please add " + x + " extra chars";
