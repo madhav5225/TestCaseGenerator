@@ -1015,7 +1015,7 @@
                     <p class="card-text">Some quick </p>
 
                 </div>
-                <a href="https://www.github.com/jatin-773726">
+                <a href="https://www.github.com/jatin-773762">
                     <div class="card-footer text-muted git_link">
                         <i class="fa fa-github fa-align-center" style="font-size:24px"></i> <strong>Developer</strong>
                     </div>
