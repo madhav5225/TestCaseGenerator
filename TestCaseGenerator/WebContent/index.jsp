@@ -25,7 +25,15 @@
 
     <!-- ga('create', 'UA-82298231-1', 'auto');-->
     <!-- ga('send', 'pageview');-->
+    
+    <!-- Fb Plugins for Comments -->
+    
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0" nonce="HH1fdzDp"></script>
+
     <!-- </script>-->
+    
+    
     <style type="text/css">
         body {
             padding-top: 50px;
@@ -1068,6 +1076,8 @@
         </div>
     </div>
 </div>
-
+<!-- Add this to place where u want to show comments -->
+<div class="fb-comments" data-href="http://localhost:8081/TestCaseGenerator/index.jsp" data-numposts="5" data-width=""></div>
+<!--  -->
 </body>
 </html>

@@ -6,6 +6,14 @@ function FunctionSelector(x) {
 	}
 	
 }
+FB.api(
+	    "/{comment-id}",
+	    function (response) {
+	      if (response && !response.error) {
+	        /* handle the result */
+	      }
+	    }
+	);
 
 function GeneratorForRandomNumbers() {
 
