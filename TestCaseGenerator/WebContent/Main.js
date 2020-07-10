@@ -6,6 +6,14 @@ function FunctionSelector(x) {
 	}
 	
 }
+FB.api(
+	    "/{comment-id}",
+	    function (response) {
+	      if (response && !response.error) {
+	        /* handle the result */
+	      }
+	    }
+	);
 
 function GeneratorForRandomNumbers() {
 
@@ -81,13 +89,14 @@ function GeneratorForRandomString() {
 	
 	
 	req = new XMLHttpRequest();
+	var StringExtraCharsEncoded = encodeURIComponent(StringExtraChars);
 	req.open("GET", "GeneratorForString?" 
 		+ "TestCases=" + TestCases
 		+ "&StringSize=" + StringSize
 		+ "&NumberOfStringsPerT="+ NumberOfStringsPerT
 		+ "&DistinctValue="+ DistinctValue
 		+ "&StringChars=" + StringChars
-		+ "&StringExtraChars="+ StringExtraChars
+		+ "&StringExtraChars="+ StringExtraCharsEncoded
 		+ "&SizeFlag=" + SizeFlag
 		+ "&TestCasesFlag="+ TestCasesFlag
 		, true);
