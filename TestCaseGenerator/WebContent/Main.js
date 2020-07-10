@@ -15,8 +15,7 @@ function GeneratorForRandomNumbers() {
 	var MaxValue = document.getElementById("MaxValueForRandomNumbers").value;
 	var TestCaseFlag = document.getElementById("TTestCaseFlagForRandomNumbers").value;
 	
-	var x="";
-	document.getElementById("FinalData").innerHTML=x;
+	
 	req = new XMLHttpRequest();
 	// Creating Request
 	req.open("GET", "GeneratorForRandomNumbers?" +
@@ -44,10 +43,8 @@ function GeneratorForRandomArray() {
 	var MaxValue = document.getElementById("MaxValueForArray").value;
 	var SizeFlag = document.getElementById("SizeFlagForArray").value;
 	var TestCasesFlag = document.getElementById("TestCasesFlagForArray").value;
-
+	
 	req = new XMLHttpRequest();
-	// Creating Request
-	document.getElementById("FinalData").innerHTML="";
 	req.open("GET", "GeneratorForArray?" 
 		+ "TestCases=" + TestCases
 		+ "&ArraySize=" + ArraySize
@@ -67,3 +64,41 @@ function GeneratorForRandomArray() {
 
 	}
 }
+
+
+
+
+function GeneratorForRandomString() {
+
+	var TestCases = document.getElementById("TestCasesForString").value;
+	var StringSize = document.getElementById("StringSize").value;
+	var NumberOfStringsPerT = document.getElementById("NumberOfStringsPerT").value;
+	var DistinctValue = document.getElementById("DistinctValueForArray").value;
+	var StringChars = document.getElementById("StringChars").value;
+	var StringExtraChars= document.getElementById("StringExtraChars").value;
+	var SizeFlag = document.getElementById("SizeFlagForString").value;
+	var TestCasesFlag = document.getElementById("TestCasesFlagForString").value;
+	
+	
+	req = new XMLHttpRequest();
+	req.open("GET", "GeneratorForString?" 
+		+ "TestCases=" + TestCases
+		+ "&StringSize=" + StringSize
+		+ "&NumberOfStringsPerT="+ NumberOfStringsPerT
+		+ "&DistinctValue="+ DistinctValue
+		+ "&StringChars=" + StringChars
+		+ "&StringExtraChars="+ StringExtraChars
+		+ "&SizeFlag=" + SizeFlag
+		+ "&TestCasesFlag="+ TestCasesFlag
+		, true);
+	req.send();
+	req.onreadystatechange = function() {
+		if (req.readyState == 4 && req.status == 200)
+		{
+			//alert("how are you");
+			document.getElementById("FinalData").innerHTML=req.responseText;
+			}
+
+	}
+}
+
