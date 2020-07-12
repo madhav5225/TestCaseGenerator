@@ -146,7 +146,7 @@ Random rand=new Random();
 				response.getWriter().write(x+" "+y+" "+weight);
 				else
 			response.getWriter().write(x+" "+y+" "+weight+"\n");
-			
+
 		}
 		 }
 	}
