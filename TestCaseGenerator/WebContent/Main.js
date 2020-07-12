@@ -106,6 +106,7 @@ function GeneratorForRandomString() {
 		if (document.getElementById("error").style.display === "block") {
 			document.getElementById("error").style.display = "none";
 		}
+		var StringExtraCharsEncoded = encodeURIComponent(StringExtraChars);
 		req = new XMLHttpRequest();
 		req.open("GET", "GeneratorForString?"
 			+ "TestCases=" + TestCases
@@ -113,7 +114,7 @@ function GeneratorForRandomString() {
 			+ "&NumberOfStringsPerT=" + NumberOfStringsPerT
 			+ "&DistinctValue=" + DistinctValue
 			+ "&StringChars=" + StringChars
-			+ "&StringExtraChars=" + StringExtraChars
+			+ "&StringExtraChars=" + StringExtraCharsEncoded
 			+ "&SizeFlag=" + SizeFlag
 			+ "&TestCasesFlag=" + TestCasesFlag
 			, true);
@@ -128,3 +129,61 @@ function GeneratorForRandomString() {
 	}
 }
 
+function GeneratorForUnTree() {
+
+	
+
+	var TestCases = document.getElementById("TestCasesForUnTree").value;
+	var UnTreeSize = document.getElementById("UnTreeSize").value;
+	var IndexFrom = document.getElementById("IndexForUnTree").value;
+	var SizeFlag = document.getElementById("SizeFlagForUnTree").value;
+	var TestCasesFlag = document.getElementById("TestCasesFlagForUnTree").value;
+var IsWeighted="False";
+	req = new XMLHttpRequest();
+	req.open("GET", "GeneratorForTree?"
+		+ "IsWeighted=" + IsWeighted
+		+ "&TestCases=" + TestCases
+		+ "&TreeSize=" + UnTreeSize
+		+ "&IndexFrom=" + IndexFrom
+		+ "&SizeFlag=" + SizeFlag
+		+ "&TestCasesFlag=" + TestCasesFlag
+		, true);
+	req.send();
+	req.onreadystatechange = function() {
+		if (req.readyState == 4 && req.status == 200) {
+			//alert("how are you");
+			document.getElementById("FinalData").innerHTML = req.responseText;
+		}
+
+	}
+}
+function GeneratorForTree() {
+	
+	var TestCases = document.getElementById("TestCasesForTree").value;
+	var TreeSize = document.getElementById("TreeSize").value;
+	var IndexFrom = document.getElementById("IndexForTree").value;
+	var MinValue = document.getElementById("MinValueForTree").value;
+	var MaxValue = document.getElementById("MaxValueForTree").value;
+	var SizeFlag = document.getElementById("SizeFlagForTree").value;
+	var TestCasesFlag = document.getElementById("TestCasesFlagForTree").value;
+	var IsWeighted="True";
+	req = new XMLHttpRequest();
+	req.open("GET", "GeneratorForTree?"
+			+ "IsWeighted=" + IsWeighted
+			+ "&TestCases=" + TestCases
+		+ "&TreeSize=" + TreeSize
+		+ "&IndexFrom=" + IndexFrom
+		+ "&MinValue=" + MinValue
+		+ "&MaxValue=" + MaxValue
+		+ "&SizeFlag=" + SizeFlag
+		+ "&TestCasesFlag=" + TestCasesFlag
+		, true);
+	req.send();
+	req.onreadystatechange = function() {
+		if (req.readyState == 4 && req.status == 200) {
+			//alert("how are you");
+			document.getElementById("FinalData").innerHTML = req.responseText;
+		}
+
+	}
+}
