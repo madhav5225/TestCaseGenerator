@@ -187,3 +187,86 @@ function GeneratorForTree() {
 
 	}
 }
+
+//TestCasesForUnGraph
+//UnGraphSize
+//
+//IndexForUnGraph
+//UngraphEdges
+//IsDirectedUnForGraph
+//SizeFlagForUnGraph
+//TestCasesFlagForUnGraph
+//TestCasesForGraph
+//GraphSize
+//graphEdges
+//IndexForGraph
+//IsDirectedForGraph
+//SizeFlagForGraph
+//TestCasesFlagForGraph
+//MaxValueForGraph
+//MaxValueForGraph
+function GeneratorForUnGraph() {
+
+	var TestCases = document.getElementById("TestCasesForUnGraph").value;
+	var UnGraphSize = document.getElementById("UnGraphSize").value;
+	var UnGraphEdges = document.getElementById("UngraphEdges").value;
+	var IndexFrom = document.getElementById("IndexForUnGraph").value;
+	var IsDirected = document.getElementById("IsDirectedForUnGraph").value;
+	var SizeFlag = document.getElementById("SizeFlagForUnGraph").value;
+	var TestCasesFlag = document.getElementById("TestCasesFlagForUnGraph").value;
+var IsWeighted="False";
+	req = new XMLHttpRequest();
+	req.open("GET", "GeneratorForGraph?"
+		+ "IsWeighted=" + IsWeighted
+		+ "&TestCases=" + TestCases
+		+ "&GraphSize=" + UnGraphSize
+		+ "&GraphEdges=" + UnGraphEdges
+		+ "&IndexFrom=" + IndexFrom
+		+ "&IsDirected=" + IsDirected
+		+ "&SizeFlag=" + SizeFlag
+		+ "&TestCasesFlag=" + TestCasesFlag
+		, true);
+	req.send();
+	req.onreadystatechange = function() {
+		if (req.readyState == 4 && req.status == 200) {
+			//alert("how are you");
+			document.getElementById("FinalData").innerHTML = req.responseText;
+		}
+
+	}
+}
+function GeneratorForGraph() {
+
+	var TestCases = document.getElementById("TestCasesForGraph").value;
+	var GraphSize = document.getElementById("GraphSize").value;
+	var GraphEdges = document.getElementById("graphEdges").value;
+	var IndexFrom = document.getElementById("IndexForGraph").value;
+	var IsDirected = document.getElementById("IsDirectedForGraph").value;
+	var MinValue = document.getElementById("MinValueForGraph").value;
+	var MaxValue = document.getElementById("MaxValueForGraph").value;
+	var SizeFlag = document.getElementById("SizeFlagForGraph").value;
+	var TestCasesFlag = document.getElementById("TestCasesFlagForGraph").value;
+    
+	var IsWeighted="True";
+	req = new XMLHttpRequest();
+	req.open("GET", "GeneratorForGraph?"
+		+ "IsWeighted=" + IsWeighted
+		+ "&TestCases=" + TestCases
+		+ "&GraphSize=" + GraphSize
+		+ "&GraphEdges=" + GraphEdges
+		+ "&IndexFrom=" + IndexFrom
+		+ "&MinValue=" + MinValue
+		+ "&MinValue=" + MaxValue
+		+ "&IsDirected=" + IsDirected
+		+ "&SizeFlag=" + SizeFlag
+		+ "&TestCasesFlag=" + TestCasesFlag
+		, true);
+	req.send();
+	req.onreadystatechange = function() {
+		if (req.readyState == 4 && req.status == 200) {
+			//alert("how are you");
+			document.getElementById("FinalData").innerHTML = req.responseText;
+		}
+
+	}
+}

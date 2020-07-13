@@ -159,7 +159,7 @@ Random rand=new Random();
 		
 		SizeFlag = request.getParameter("SizeFlag");
 		TestCasesFlag = request.getParameter("TestCasesFlag");
-		System.out.println(TestCases);
+		//System.out.println(TestCases);
     
 		
 		 parent=new int[TreeSize+1];
