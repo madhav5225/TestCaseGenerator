@@ -208,9 +208,9 @@ for(;j<StringExtraChars.length();j++)
 		SizeFlag = request.getParameter("SizeFlag");
 		TestCasesFlag = request.getParameter("TestCasesFlag");
 		
-		System.out.println(StringExtraChars);
-		System.out.println("abc+d");
-		System.out.println(request.getParameter("StringExtraChars"));
+//		System.out.println(StringExtraChars);
+//		System.out.println("abc+d");
+//		System.out.println(request.getParameter("StringExtraChars"));
 
 		response.setContentType("text/plain"); // Set content type of the response so that jQuery knows what it can
 												// expect.

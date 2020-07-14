@@ -335,6 +335,7 @@ textarea {
 												class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
 										</h4>
 									</div>
+									
 									<div id="string_random_string" class="panel-collapse collapse"
 										aria-expanded="false" role="tabpanel"
 										aria-labelledby="#string_random_string" data-type="function"
@@ -532,7 +533,8 @@ textarea {
 
 												<div class="col-xs-6">
 
-													<label>N Test Cases</label> <input type="text"
+													<label>T Test Cases</label> <input type="text" 
+													id="TestCasesForUnTree"
 														class="form-control" placeholder="n_test_cases"
 														data-type="param" data-param-name="n_test_cases">
 												</div>
@@ -540,14 +542,14 @@ textarea {
 												<div class="col-xs-6">
 
 													<label>N Nodes</label> <input type="text"
-														class="form-control" placeholder="n_nodes"
+														id="UnTreeSize"class="form-control" placeholder="n_nodes"
 														data-type="param" data-param-name="n_nodes">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>Indexed From</label> <input type="text"
-														class="form-control" placeholder="indexed_from"
+														id="IndexForUnTree"class="form-control" placeholder="indexed_from"
 														data-type="param" data-param-name="indexed_from">
 												</div>
 
@@ -555,7 +557,7 @@ textarea {
 
 													<label>Include N Nodes Flag</label> <select
 														data-type="param" data-param-name="include_n_nodes_flag"
-														class="form-control">
+														id="SizeFlagForUnTree"class="form-control">
 														<option value="0">False</option>
 														<option value="1">True</option>
 													</select>
@@ -564,9 +566,9 @@ textarea {
 
 												<div class="col-xs-6">
 
-													<label>Include N Test Cases Flag</label> <select
+													<label>Include T Test Cases Flag</label> <select
 														data-type="param"
-														data-param-name="include_n_test_cases_flag"
+														id="TestCasesFlagForUnTree" data-param-name="include_n_test_cases_flag"
 														class="form-control">
 														<option value="0">False</option>
 														<option value="1">True</option>
@@ -577,7 +579,7 @@ textarea {
 											<div id="button_container" class="col-xs-6">
 												<button type="button" id="buttonid"
 													class="btn btn-success btn-lg pull-left"
-													onclick="GeneratorForRandomNumbers()">
+													onclick="GeneratorForUnTree()">
 													<div class="text">Generate</div>
 												</button>
 											</div>
@@ -609,42 +611,42 @@ textarea {
 												<div class="col-xs-6">
 
 													<label>N Test Cases</label> <input type="text"
-														class="form-control" placeholder="n_test_cases"
+														id="TestCasesForTree"class="form-control" placeholder="n_test_cases"
 														data-type="param" data-param-name="n_test_cases">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>N Nodes</label> <input type="text"
-														class="form-control" placeholder="n_nodes"
+														id="TreeSize"class="form-control" placeholder="n_nodes"
 														data-type="param" data-param-name="n_nodes">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>Indexed From</label> <input type="text"
-														class="form-control" placeholder="indexed_from"
+													id="IndexForTree"	class="form-control" placeholder="indexed_from"
 														data-type="param" data-param-name="indexed_from">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>Weight Min Value</label> <input type="text"
-														class="form-control" placeholder="weight_min_value"
+													id="MinValueForTree"class="form-control" placeholder="weight_min_value"
 														data-type="param" data-param-name="weight_min_value">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>Weight Max Value</label> <input type="text"
-														class="form-control" placeholder="weight_max_value"
+												id="MaxValueForTree"		class="form-control" placeholder="weight_max_value"
 														data-type="param" data-param-name="weight_max_value">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>Include N Nodes Flag</label> <select
-														data-type="param" data-param-name="include_n_nodes_flag"
+														id="SizeFlagForTree" data-type="param" data-param-name="include_n_nodes_flag"
 														class="form-control">
 														<option value="0">False</option>
 														<option value="1">True</option>
@@ -654,8 +656,8 @@ textarea {
 
 												<div class="col-xs-6">
 
-													<label>Include N Test Cases Flag</label> <select
-														data-type="param"
+													<label>Include T Test Cases Flag</label> <select
+														id="TestCasesFlagForTree" data-type="param"
 														data-param-name="include_n_test_cases_flag"
 														class="form-control">
 														<option value="0">False</option>
@@ -667,7 +669,7 @@ textarea {
 											<div id="button_container" class="col-xs-6">
 												<button type="button" id="buttonid"
 													class="btn btn-success btn-lg pull-left"
-													onclick="GeneratorForRandomNumbers()">
+													onclick="GeneratorForTree()">
 													<div class="text">Generate</div>
 												</button>
 											</div>
@@ -692,7 +694,7 @@ textarea {
 												data-parent="#accordion_graph"
 												href="#graph_random_unweighted_graph" aria-expanded="false"
 												aria-controls="graph_random_unweighted_graph"
-												class="accordion-toggle"> Random Unweighted Graph </a><span
+												class="accordion-toggle"> Random Unweighted Simple Graph </a><span
 												class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
 										</h4>
 									</div>
@@ -705,38 +707,41 @@ textarea {
 										<div class="panel-body">
 											<div class="row">
 
+
 												<div class="col-xs-6">
 
-													<label>N Test Cases</label> <input type="text"
-														class="form-control" placeholder="n_test_cases"
+													<label>T Test Cases</label> <input type="text"
+														id="TestCasesForUnGraph" class="form-control" placeholder="n_test_cases"
 														data-type="param" data-param-name="n_test_cases">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>N Nodes</label> <input type="text"
-														class="form-control" placeholder="n_nodes"
+													id="UnGraphSize" class="form-control" placeholder="n_nodes"
 														data-type="param" data-param-name="n_nodes">
 												</div>
 
+
+
 												<div class="col-xs-6">
 
-													<label>N Edges</label> <input type="text"
-														class="form-control" placeholder="n_edges"
+													<label>E Edges</label> <input type="text"
+													id="UngraphEdges"	class="form-control" placeholder="n_edges"
 														data-type="param" data-param-name="n_edges">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>Indexed From</label> <input type="text"
-														class="form-control" placeholder="indexed_from"
+													id="IndexForUnGraph"	class="form-control" placeholder="indexed_from"
 														data-type="param" data-param-name="indexed_from">
 												</div>
 
 												<div class="col-xs-6">
 
-													<label>Include N E Flag</label> <select data-type="param"
-														data-param-name="include_n_e_flag" class="form-control">
+													<label>Include N Nodes and E Edges Flag</label> <select data-type="param"
+												id="SizeFlagForUnGraph"	data-param-name="include_n_e_flag" class="form-control">
 														<option value="0">False</option>
 														<option value="1">True</option>
 													</select>
@@ -745,8 +750,8 @@ textarea {
 
 												<div class="col-xs-6">
 
-													<label>Is Directed Flag</label> <select data-type="param"
-														data-param-name="is_directed_flag" class="form-control">
+													<label>Is Directed</label> <select data-type="param"
+													id="IsDirectedForUnGraph"	data-param-name="is_directed_flag" class="form-control">
 														<option value="0">False</option>
 														<option value="1">True</option>
 													</select>
@@ -755,8 +760,8 @@ textarea {
 
 												<div class="col-xs-6">
 
-													<label>Include N Test Cases Flag</label> <select
-														data-type="param"
+													<label>Include NT Test Cases Flag</label> <select
+												id="TestCasesFlagForUnGraph"	data-type="param"
 														data-param-name="include_n_test_cases_flag"
 														class="form-control">
 														<option value="0">False</option>
@@ -769,7 +774,7 @@ textarea {
 											<div id="button_container" class="col-xs-6">
 												<button type="button" id="buttonid"
 													class="btn btn-success btn-lg pull-left"
-													onclick="GeneratorForRandomNumbers()">
+													onclick="GeneratorForUnGraph()">
 													<div class="text">Generate</div>
 												</button>
 											</div>
@@ -801,36 +806,36 @@ textarea {
 
 												<div class="col-xs-6">
 
-													<label>N Test Cases</label> <input type="text"
-														class="form-control" placeholder="n_test_cases"
+													<label>T Test Cases</label> <input type="text"
+													id="TestCasesForGraph"	class="form-control" placeholder="n_test_cases"
 														data-type="param" data-param-name="n_test_cases">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>N Nodes</label> <input type="text"
-														class="form-control" placeholder="n_nodes"
+												id="GraphSize"class="form-control" placeholder="n_nodes"
 														data-type="param" data-param-name="n_nodes">
 												</div>
 
 												<div class="col-xs-6">
 
-													<label>N Edges</label> <input type="text"
-														class="form-control" placeholder="n_edges"
+													<label>E Edges</label> <input type="text"
+												id="graphEdges"		class="form-control" placeholder="n_edges"
 														data-type="param" data-param-name="n_edges">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>Indexed From</label> <input type="text"
-														class="form-control" placeholder="indexed_from"
+												id="IndexForGraph"		class="form-control" placeholder="indexed_from"
 														data-type="param" data-param-name="indexed_from">
 												</div>
 
 												<div class="col-xs-6">
 
 													<label>Weight Min Value</label> <input type="text"
-														class="form-control" placeholder="weight_min_value"
+													id="MinValueForGraph"	class="form-control" placeholder="weight_min_value"
 														data-type="param" data-param-name="weight_min_value">
 												</div>
 
@@ -843,8 +848,8 @@ textarea {
 
 												<div class="col-xs-6">
 
-													<label>Include N E Flag</label> <select data-type="param"
-														data-param-name="include_n_e_flag" class="form-control">
+													<label>Include N Nodes and  E Edges Flag</label> <select data-type="param"
+													id="SizeFlagForGraph"	data-param-name="include_n_e_flag" class="form-control">
 														<option value="0">False</option>
 														<option value="1">True</option>
 													</select>
@@ -854,7 +859,7 @@ textarea {
 												<div class="col-xs-6">
 
 													<label>Is Directed Flag</label> <select data-type="param"
-														data-param-name="is_directed_flag" class="form-control">
+												id="IsDirectedForGraph"	data-param-name="is_directed_flag" class="form-control">
 														<option value="0">False</option>
 														<option value="1">True</option>
 													</select>
@@ -863,8 +868,8 @@ textarea {
 
 												<div class="col-xs-6">
 
-													<label>Include N Test Cases Flag</label> <select
-														data-type="param"
+													<label>Include T Test Cases Flag</label> <select
+												id="TestCasesFlagForGraph"		data-type="param"
 														data-param-name="include_n_test_cases_flag"
 														class="form-control">
 														<option value="0">False</option>
@@ -876,7 +881,7 @@ textarea {
 											<div id="button_container" class="col-xs-6">
 												<button type="button" id="buttonid"
 													class="btn btn-success btn-lg pull-left"
-													onclick="GeneratorForRandomNumbers()">
+													onclick="GeneratorForGraph()()">
 													<div class="text">Generate</div>
 												</button>
 											</div>
