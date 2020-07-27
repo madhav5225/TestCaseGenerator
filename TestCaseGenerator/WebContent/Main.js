@@ -1,3 +1,4 @@
+/* global FB */
 FB.api(
     "/{comment-id}",
     function (response) {
@@ -61,9 +62,6 @@ function generator_click() {
         case "random_string":
             if (verify_input("random_string"))
                 GeneratorForRandomString();
-            else {
-                alert("Invalid Input!!!");
-            }
             break;
         case "random_unweighted_tree":
             if (verify_input("random_unweighted_tree"))
@@ -94,7 +92,6 @@ function generator_click() {
             }
             break;
         default:
-            // $('.alert').alert();
             alert("Please Select Valid Option!!!");
             break;
     }
@@ -108,7 +105,7 @@ function verify_input(selected) {
         var MinValue = document.getElementById("MinValueForRandomNumbers").value;
         var MaxValue = document.getElementById("MaxValueForRandomNumbers").value;
 
-        return TestCases > 0 && MinValue.length > 0 && MaxValue.length > 0 && MinValue<MaxValue;
+        return TestCases > 0 && MinValue.length > 0 && MaxValue.length > 0 && MinValue<=MaxValue;
 
     }
 
@@ -118,17 +115,32 @@ function verify_input(selected) {
         var MinValue = document.getElementById("MinValueForArray").value;
         var MaxValue = document.getElementById("MaxValueForArray").value;
 
-        return TestCases > 0 && ArraySize>0 && MinValue.length > 0 && MaxValue.length > 0 && MinValue<MaxValue;
+        return TestCases > 0 && ArraySize>0 && MinValue.length > 0 && MaxValue.length > 0 && MinValue<=MaxValue;
     }
 
     if (selected ==="random_string"){
         var TestCases = document.getElementById("TestCasesForString").value;
         var StringSize = document.getElementById("StringSize").value;
         var NumberOfStringsPerT = document.getElementById("NumberOfStringsPerT").value;
+        var DistinctValue = document.getElementById("DistinctValueForString").value;
         var StringChars = document.getElementById("StringChars").value;
         var StringExtraChars = document.getElementById("StringExtraChars").value;
-
-        return TestCases>0 && StringSize>0 && NumberOfStringsPerT>0 && (( StringChars===0 && StringExtraChars>0) || StringChars!==0);
+        var SizeFlag = document.getElementById("SizeFlagForString").value;
+        var TestCasesFlag = document.getElementById("TestCasesFlagForString").value;
+        var x = StringSize;
+        if (DistinctValue === 1 && (StringChars === 1 || StringChars === 2) && x - 26 > StringExtraChars.length) {
+            x = x - 26 - StringExtraChars.length;
+            alert("please add " + x + " extra chars");
+        } else if (DistinctValue === 1 && StringChars === 3 && x - 42 > StringExtraChars.length) {
+            x = x - 42 - StringExtraChars.length;
+            alert("please add " + x + " extra chars");
+        } else if (DistinctValue === 1 && StringChars === 0 && StringExtraChars.length < StringSize) {
+            x = x - StringExtraChars.length;
+            alert("please add " + x + " extra chars");
+        } else if(TestCases>0 && StringSize>0 && NumberOfStringsPerT>0 && (( StringChars===0 && StringExtraChars>0) || StringChars!==0)){
+            return true;
+        }
+        return false;
     }
 
     if (selected ==="random_unweighted_tree"){
@@ -195,7 +207,7 @@ function GeneratorForRandomNumbers() {
     req.onreadystatechange = function () {
         if (req.readyState == 4 && req.status == 200) {
             //alert(req.responseText);
-            document.getElementById("FinalData").innerHTML = req.responseText;
+            document.getElementById("FinalData").value = req.responseText;
         }
     }
 }
@@ -224,7 +236,7 @@ function GeneratorForRandomArray() {
     req.onreadystatechange = function () {
         if (req.readyState == 4 && req.status == 200) {
             //alert("how are you");
-            document.getElementById("FinalData").innerHTML = req.responseText;
+            document.getElementById("FinalData").value = req.responseText;
         }
 
     }
@@ -242,43 +254,26 @@ function GeneratorForRandomString() {
     var SizeFlag = document.getElementById("SizeFlagForString").value;
     var TestCasesFlag = document.getElementById("TestCasesFlagForString").value;
 
-    var x = StringSize;
-    if (DistinctValue == 1 && (StringChars == 1 || StringChars == 2) && x - 26 > StringExtraChars.length) {
-        x = x - 26 - StringExtraChars.length;
-        document.getElementById("error").style.display = "block";
-        alert("please add " + x + " extra chars");
-        document.getElementById("error_box").innerHTML = "please add " + x + " extra chars";
-    } else if (DistinctValue == 1 && StringChars == 3 && x - 42 > StringExtraChars.length) {
-        x = x - 42 - StringExtraChars.length;
-        alert("please add " + x + " extra chars");
-        document.getElementById("error").style.display = "block";
-        document.getElementById("error_box").innerHTML = "please add " + x + " extra chars";
-    } else if (DistinctValue == 1 && StringChars == 0 && StringExtraChars.length < StringSize) {
-        x = x - StringExtraChars.length;
-        document.getElementById("error").style.display = "block";
-        document.getElementById("error_box").innerHTML = "please add " + x + " extra chars";
-    } else {
-        if (document.getElementById("error").style.display === "block") {
-            document.getElementById("error").style.display = "none";
-        }
-        var StringExtraCharsEncoded = encodeURIComponent(StringExtraChars);
-        req = new XMLHttpRequest();
-        req.open("GET", "GeneratorForString?"
-            + "TestCases=" + TestCases
-            + "&StringSize=" + StringSize
-            + "&NumberOfStringsPerT=" + NumberOfStringsPerT
-            + "&DistinctValue=" + DistinctValue
-            + "&StringChars=" + StringChars
-            + "&StringExtraChars=" + StringExtraCharsEncoded
-            + "&SizeFlag=" + SizeFlag
-            + "&TestCasesFlag=" + TestCasesFlag
-            , true);
-        req.send();
-        req.onreadystatechange = function () {
-            if (req.readyState == 4 && req.status == 200) {
-                //alert("how are you");
-                document.getElementById("FinalData").innerHTML = req.responseText;
-            }
+
+    var StringExtraCharsEncoded = encodeURIComponent(StringExtraChars);
+    req = new XMLHttpRequest();
+    req.open("GET", "GeneratorForString?"
+        + "TestCases=" + TestCases
+        + "&StringSize=" + StringSize
+        + "&NumberOfStringsPerT=" + NumberOfStringsPerT
+        + "&DistinctValue=" + DistinctValue
+        + "&StringChars=" + StringChars
+        + "&StringExtraChars=" + StringExtraCharsEncoded
+        + "&SizeFlag=" + SizeFlag
+        + "&TestCasesFlag=" + TestCasesFlag
+        , true);
+    req.send();
+    req.onreadystatechange = function () {
+        if (req.readyState == 4 && req.status == 200) {
+
+            //alert("how are you");
+
+            document.getElementById("FinalData").value = req.responseText;
 
         }
     }
@@ -305,7 +300,7 @@ function GeneratorForUnTree() {
     req.onreadystatechange = function () {
         if (req.readyState == 4 && req.status == 200) {
             //alert("how are you");
-            document.getElementById("FinalData").innerHTML = req.responseText;
+            document.getElementById("FinalData").value = req.responseText;
         }
 
     }
@@ -336,7 +331,7 @@ function GeneratorForTree() {
     req.onreadystatechange = function () {
         if (req.readyState == 4 && req.status == 200) {
             //alert("how are you");
-            document.getElementById("FinalData").innerHTML = req.responseText;
+            document.getElementById("FinalData").value = req.responseText;
         }
 
     }
@@ -385,7 +380,7 @@ function GeneratorForUnGraph() {
     req.onreadystatechange = function () {
         if (req.readyState == 4 && req.status == 200) {
             //alert("how are you");
-            document.getElementById("FinalData").innerHTML = req.responseText;
+            document.getElementById("FinalData").value = req.responseText;
         }
 
     }
@@ -421,7 +416,7 @@ function GeneratorForGraph() {
     req.onreadystatechange = function () {
         if (req.readyState == 4 && req.status == 200) {
             //alert("how are you");
-            document.getElementById("FinalData").innerHTML = req.responseText;
+            document.getElementById("FinalData").value = req.responseText;
         }
 
     }
