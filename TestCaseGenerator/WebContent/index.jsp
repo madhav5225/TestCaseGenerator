@@ -817,6 +817,7 @@
 
                                                     <label>Weight Max Value</label> <input type="number"
                                                                                            required="required"
+                                                                                           id="MaxValueForGraph"
                                                                                            class="form-control"
                                                                                            placeholder="weight_max_value"
                                                                                            data-type="param"
