@@ -148,7 +148,7 @@ function verify_input(selected) {
         var UnTreeSize = document.getElementById("UnTreeSize").value;
         var IndexFrom = document.getElementById("IndexForUnTree").value;
 
-        return TestCases>0 && UnTreeSize>0 && IndexFrom>0;
+        return TestCases>0 && UnTreeSize>0 && IndexFrom>=0;
     }
 
     if (selected ==="random_weighted_tree"){
@@ -158,7 +158,7 @@ function verify_input(selected) {
         var MinValue = document.getElementById("MinValueForTree").value;
         var MaxValue = document.getElementById("MaxValueForTree").value;
 
-        return TestCases>0 && TreeSize>0 && IndexFrom>0 && MinValue.length>0 && MaxValue.length>0 && MinValue<MaxValue;
+        return TestCases>0 && TreeSize>0 && IndexFrom>0 && MinValue.length>0 && MaxValue.length>0 && MinValue<=MaxValue;
     }
 
     if (selected ==="random_unweighted_graph"){
@@ -167,8 +167,12 @@ function verify_input(selected) {
         var UnGraphEdges = document.getElementById("UngraphEdges").value;
         var IsDirected = document.getElementById("IsDirectedForUnGraph").value;
         var IndexFrom = document.getElementById("IndexForUnGraph").value;
-
-        return TestCases>0 && UnGraphSize>0 && UnGraphEdges>0 && ((IsDirected===0 && UnGraphEdges<(UnGraphSize*(UnGraphSize-1)/2))||(IsDirected===1 && UnGraphEdges<UnGraphSize*(UnGraphSize-1))) && IndexFrom>0;
+        if(IsDirected==0){
+            return TestCases>0 && UnGraphSize>0 && UnGraphEdges>=0 && UnGraphEdges<=(UnGraphSize*(UnGraphSize-1)/2) && IndexFrom>=0;
+        }
+        else{
+            return TestCases>0 && UnGraphSize>0 && UnGraphEdges>=0 && UnGraphEdges<=(UnGraphSize*(UnGraphSize-1)) && IndexFrom>=0;
+        }
 
     }
 
@@ -180,8 +184,12 @@ function verify_input(selected) {
         var IsDirected = document.getElementById("IsDirectedForGraph").value;
         var MinValue = document.getElementById("MinValueForGraph").value;
         var MaxValue = document.getElementById("MaxValueForGraph").value;
-
-        return TestCases>0 && GraphSize>0 && GraphEdges>0 && ((IsDirected===0 && GraphEdges<(GraphSize*(GraphSize-1)/2))||(IsDirected===1 && GraphEdges<GraphSize*(GraphSize-1))) && IndexFrom>0 && MinValue.length>0 && MaxValue.length>0 && MinValue<MaxValue;
+        if(IsDirected==0){
+            return TestCases>0 && UnGraphSize>0 && UnGraphEdges>=0 && UnGraphEdges<=(UnGraphSize*(UnGraphSize-1)/2) && IndexFrom>=0 && MaxValue.length>0 && MinValue<=MaxValue;
+        }
+        else{
+            return TestCases>0 && UnGraphSize>0 && UnGraphEdges>=0 && UnGraphEdges<=(UnGraphSize*(UnGraphSize-1)) && IndexFrom>=0 && MaxValue.length>0 && MinValue<=MaxValue;
+        }
     }
 
     return false;
