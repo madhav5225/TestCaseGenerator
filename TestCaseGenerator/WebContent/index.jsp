@@ -2,77 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Test Case Generator</title>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script
-            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="icon" href="icon.svg" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css">
     <script src="Main.js"></script>
-    <!-- <script>-->
-    <!-- (function(i, s, o, g, r, a, m) {-->
-    <!-- i['GoogleAnalyticsObject'] = r;-->
-    <!-- i[r] = i[r] || function() {-->
-    <!-- (i[r].q = i[r].q || []).push(arguments)-->
-    <!-- }, i[r].l = 1 * new Date();-->
-    <!-- a = s.createElement(o),-->
-    <!-- m = s.getElementsByTagName(o)[0];-->
-    <!-- a.async = 1;-->
-    <!-- a.src = g;-->
-    <!-- m.parentNode.insertBefore(a, m)-->
-    <!-- })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');-->
-    <!-- ga('create', 'UA-82298231-1', 'auto');-->
-    <!-- ga('send', 'pageview');-->
-
-    <!-- Fb Plugins for Comments -->
-    <!-- </script>-->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-82298231-1', 'auto');
+        ga('send', 'pageview');
+    </script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
             src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v7.0"
             nonce="HH1fdzDp"></script>
-
-
     <style type="text/css">
         body {
-            padding-top: 50px;
             font-family: Overpass, -apple-system, BlinkMacSystemFont, "Segoe UI",
             Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
             sans-serif;
         }
 
-        input, select {
-
-            font-family: monospace;
-        }
-
-        label {
-            margin-top: 15px;
-            padding-left: 5px
-        }
-
-        .panel-title > a:hover, a:link, a:visited, a:active {
-            text-decoration: none;
-        }
-
-        input, select {
-            font-family: monospace;
-        }
-
-        label {
-            margin-top: 15px;
-            padding-left: 5px
-        }
-
-        .panel-title > a:hover, a:link, a:visited, a:active {
-            text-decoration: none;
-        }
-
-        .git_link:hover {
+        a {
             color: black;
         }
+
+        input, select {
+
+            font-family: monospace;
+        }
+
+        label {
+            margin-top: 15px;
+            padding-left: 5px
+        }
+
+        .panel-title > a:hover, a:link, a:visited, a:active {
+            text-decoration: none;
+        }
+
+        input, select {
+            font-family: monospace;
+        }
+
+        label {
+            margin-top: 15px;
+            padding-left: 5px
+        }
+
+        .panel-title > a:hover, a:link, a:visited, a:active {
+            text-decoration: none;
+        }
+
 
         button {
             margin-top: 10px;
@@ -115,8 +108,92 @@
     </style>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-top" style="background: #2c90ff">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle btn-lg" data-toggle="collapse" data-target="#myNavbar">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </button>
+            <a class="navbar-brand" style="color: #ffffff" href="#"><b>Generator Test Case</b></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="btn btn-link"  href="https://github.com/madhav5225/TestCaseGenerator" target="_blank" style="color: #ffffff">
+                    <span class="fa fa-github"></span> Github Repo
+                    </a>
+                </li>
+                <li><a class="btn btn-link" data-toggle="modal" data-target="#comment"  style="color: #ffffff"><span class="fa fa-comments-o"></span> Comments</a></li>
+                <li><a class="btn btn-link" data-toggle="modal" data-target="#developers" style="color: #ffffff"><span class="fa fa-user"></span> Developers</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-<div class="container">
+<div class="modal fade" id="developers" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title col-md-5" id="exampleModalLabel">Developers Info</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                            <div class="row text-center">
+                                <div class="col-lg-6">
+                                    <div class="card-header">
+                                        <h4 class="card-title"><i>Jatin Garg</i></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6>Motilal Nehru National Institute of Technology Allahabad</h6>
+                                        <h6>Information Technology</h6>
+                                    </div>
+                                    <div class="card-footer">
+                                    <a class="btn btn-social-icon btn-github" href="https://www.github.com/jatin-773762">
+                                        <span class="fa fa-github"></span>
+                                    </a>
+                                    <a class="btn btn-social-icon btn-facebook" href="https://www.fb.com/jatin.manugarg">
+                                        <span class="fa fa-facebook"></span>
+                                    </a>
+                                    <a class="btn btn-social-icon btn-linkedin" href="https://www.linkedin.com/in/jatingarg99">
+                                        <span class="fa fa-linkedin"></span>
+                                    </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card-header">
+                                        <h4 class="card-title"><i>Madhav Agarwal</i></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6>Motilal Nehru National Institute of Technology Allahabad</h6>
+                                        <h6>Information Technology</h6>
+                                    </div>
+                                    <div class="card-footer">
+                                    <a class="btn btn-social-icon btn-github" href="https://www.github.com/madhav5225">
+                                        <span class="fa fa-github"></span>
+                                    </a>
+                                    <a class="btn btn-social-icon btn-facebook" href="https://www.facebook.com/madhav.agrawal.1232">
+                                        <span class="fa fa-facebook"></span>
+                                    </a>
+                                    <a class="btn btn-social-icon btn-linkedin" href="https://www.linkedin.com/in/madhav-agrawal-58b854171/">
+                                        <span class="fa fa-linkedin"></span>
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+<!--                    <hr class="center-block">-->
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <!--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+                <!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 80px">
     <div class="row">
         <div class="col-md-7">
             <div class="tabbable tabs-left">
@@ -154,13 +231,15 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab"
                                      id="heading_number_random_number">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse"
-                                           data-parent="#accordion_number" href="#number_random_number"
-                                           aria-expanded="false" aria-controls="number_random_number"
-                                           class="accordion-toggle"> Random Number </a><span
-                                            class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-                                    </h4>
+                                    <a role="button" data-toggle="collapse"
+                                       data-parent="#accordion_number" href="#number_random_number"
+                                       aria-expanded="false" aria-controls="number_random_number"
+                                       class="accordion-toggle">
+                                        <h4 class="panel-title">
+                                            Random Number<span
+                                                class="indicator glyphicon glyphicon-chevron-down pull-right"></span>
+                                        </h4>
+                                    </a>
                                 </div>
                                 <div id="number_random_number" class="panel-collapse collapse"
                                      aria-expanded="false" role="tabpanel"
@@ -226,14 +305,15 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab"
                                      id="heading_array_random_array">
-                                    <h4 class="panel-title">
-
-                                        <a role="button" data-toggle="collapse"
-                                           data-parent="#accordion_array" href="#array_random_array"
-                                           aria-expanded="false" aria-controls="array_random_array"
-                                           class="accordion-toggle"> Random Array </a><span
-                                            class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-                                    </h4>
+                                    <a role="button" data-toggle="collapse"
+                                       data-parent="#accordion_array" href="#array_random_array"
+                                       aria-expanded="false" aria-controls="array_random_array"
+                                       class="accordion-toggle">
+                                        <h4 class="panel-title">
+                                            Random Array<span
+                                                class="indicator glyphicon glyphicon-chevron-down pull-right"></span>
+                                        </h4>
+                                    </a>
                                 </div>
                                 <div id="array_random_array" class="panel-collapse collapse"
                                      aria-expanded="false" role="tabpanel"
@@ -333,13 +413,17 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab"
                                      id="heading_string_random_string">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse"
-                                           data-parent="#accordion_string" href="#string_random_string"
-                                           aria-expanded="false" aria-controls="string_random_string"
-                                           class="accordion-toggle"> Random String </a><span
-                                            class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-                                    </h4>
+                                    <a role="button" data-toggle="collapse"
+                                       data-parent="#accordion_string" href="#string_random_string"
+                                       aria-expanded="false" aria-controls="string_random_string"
+                                       class="accordion-toggle">
+                                        <h4 class="panel-title">
+                                            Random String
+                                            <span class="indicator glyphicon glyphicon-chevron-down pull-right"></span>
+                                        </h4>
+                                    </a>
+
+
                                 </div>
 
                                 <div id="string_random_string" class="panel-collapse collapse"
@@ -347,7 +431,7 @@
                                      aria-labelledby="#string_random_string" data-type="function"
                                      data-function-name="random_string">
                                     <div class="panel-body">
-                                        <div class="row">
+                                        <div class="col">
                                             <form action="#" onsubmit="generator_click()">
                                                 <div class="col-xs-6">
                                                     <label>T Test Cases</label> <input id="TestCasesForString"
@@ -357,7 +441,16 @@
                                                                                        data-type="param"
                                                                                        data-param-name="n_test_cases">
                                                 </div>
+                                                <div class="col-xs-6">
+                                                    <label>Include T Test Cases Flag</label> <select
+                                                        id="TestCasesFlagForString" data-type="param"
+                                                        data-param-name="include_T_test_cases_flag"
+                                                        class="form-control">
+                                                    <option value="0">False</option>
+                                                    <option value="1">True</option>
+                                                </select>
 
+                                                </div>
                                                 <div class="col-xs-6">
                                                     <label>String Length</label> <input id="StringSize"
                                                                                         required="required"
@@ -377,8 +470,9 @@
                                                 </div>
 
                                                 <div class="col-xs-6">
-                                                    <label>Distinct Char Flag</label> <select
-                                                        id="DistinctValueForString" class="form-control">
+                                                    <label>Distinct Char Flag</label> <select data-type="param"
+                                                                                              id="DistinctValueForString"
+                                                                                              class="form-control">
                                                     <option value="0">False</option>
                                                     <option value="1">True</option>
                                                 </select>
@@ -386,14 +480,13 @@
 
                                                 <div class="col-xs-6">
                                                     <div class="form-group">
-                                                        <label for="self1">Chars</label> <select id="StringChars"
-                                                                                                 class="form-control"
-                                                                                                 id="self1">
-                                                        <option value="1">A-Z</option>
-                                                        <option value="2">a-z</option>
-                                                        <option value="3">A-z,a-z</option>
-                                                        <option value="0">Custom</option>
-                                                    </select>
+                                                        <label>Chars</label>
+                                                        <select id="StringChars" data-type="param" class="form-control">
+                                                            <option value="1">A-Z</option>
+                                                            <option value="2">a-z</option>
+                                                            <option value="3">A-z,a-z</option>
+                                                            <option value="0">Custom</option>
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -403,7 +496,6 @@
                                                                                       class="form-control"
                                                                                       placeholder="extras"
                                                                                       data-type="param" type="text">
-
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label>Include N Size Flag</label> <select
@@ -414,16 +506,7 @@
                                                     <option value="1">True</option>
                                                 </select>
                                                 </div>
-                                                <div class="col-xs-6">
-                                                    <label>Include T Test Cases Flag</label> <select
-                                                        id="TestCasesFlagForString" data-type="param"
-                                                        data-param-name="include_T_test_cases_flag"
-                                                        class="form-control">
-                                                    <option value="0">False</option>
-                                                    <option value="1">True</option>
-                                                </select>
 
-                                                </div>
 
                                             </form>
                                         </div>
@@ -441,15 +524,16 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab"
                                      id="heading_tree_random_unweighted_tree">
-                                    <h4 class="panel-title">
-
-                                        <a role="button" data-toggle="collapse"
-                                           data-parent="#accordion_tree"
-                                           href="#tree_random_unweighted_tree" aria-expanded="false"
-                                           aria-controls="tree_random_unweighted_tree"
-                                           class="accordion-toggle"> Random Unweighted Tree </a><span
-                                            class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-                                    </h4>
+                                    <a role="button" data-toggle="collapse"
+                                       data-parent="#accordion_tree"
+                                       href="#tree_random_unweighted_tree" aria-expanded="false"
+                                       aria-controls="tree_random_unweighted_tree"
+                                       class="accordion-toggle">
+                                        <h4 class="panel-title">
+                                            Random Unweighted Tree <span
+                                                class="indicator glyphicon glyphicon-chevron-down pull-right"></span>
+                                        </h4>
+                                    </a>
                                 </div>
                                 <div id="tree_random_unweighted_tree"
                                      class="panel-collapse collapse" aria-expanded="false"
@@ -523,15 +607,17 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab"
                                      id="heading_tree_random_weighted_tree">
-                                    <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse"
+                                       data-parent="#accordion_tree"
+                                       href="#tree_random_weighted_tree" aria-expanded="false"
+                                       aria-controls="tree_random_weighted_tree"
+                                       class="accordion-toggle">
+                                        <h4 class="panel-title">
 
-                                        <a role="button" data-toggle="collapse"
-                                           data-parent="#accordion_tree"
-                                           href="#tree_random_weighted_tree" aria-expanded="false"
-                                           aria-controls="tree_random_weighted_tree"
-                                           class="accordion-toggle"> Random Weighted Tree </a><span
-                                            class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-                                    </h4>
+                                            Random Weighted Tree<span
+                                                class="indicator glyphicon glyphicon-chevron-down pull-right"></span>
+                                        </h4>
+                                    </a>
                                 </div>
                                 <div id="tree_random_weighted_tree"
                                      class="panel-collapse collapse" aria-expanded="false"
@@ -635,16 +721,18 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab"
                                      id="heading_graph_random_unweighted_graph">
-                                    <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse"
+                                       data-parent="#accordion_graph"
+                                       href="#graph_random_unweighted_graph" aria-expanded="false"
+                                       aria-controls="graph_random_unweighted_graph"
+                                       class="accordion-toggle">
+                                        <h4 class="panel-title">
 
-                                        <a role="button" data-toggle="collapse"
-                                           data-parent="#accordion_graph"
-                                           href="#graph_random_unweighted_graph" aria-expanded="false"
-                                           aria-controls="graph_random_unweighted_graph"
-                                           class="accordion-toggle"> Random Unweighted Simple Graph
-                                        </a><span
-                                            class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-                                    </h4>
+                                            Random Unweighted Simple Graph
+                                            <span
+                                                    class="indicator glyphicon glyphicon-chevron-down pull-right"></span>
+                                        </h4>
+                                    </a>
                                 </div>
                                 <div id="graph_random_unweighted_graph"
                                      class="panel-collapse collapse" aria-expanded="false"
@@ -742,15 +830,18 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab"
                                      id="heading_graph_random_weighted_graph">
-                                    <h4 class="panel-title">
 
-                                        <a role="button" data-toggle="collapse"
-                                           data-parent="#accordion_graph"
-                                           href="#graph_random_weighted_graph" aria-expanded="false"
-                                           aria-controls="graph_random_weighted_graph"
-                                           class="accordion-toggle"> Random Weighted Graph </a><span
-                                            class="indicator glyphicon glyphicon-chevron-right pull-right"></span>
-                                    </h4>
+                                    <a role="button" data-toggle="collapse"
+                                       data-parent="#accordion_graph"
+                                       href="#graph_random_weighted_graph" aria-expanded="false"
+                                       aria-controls="graph_random_weighted_graph"
+                                       class="accordion-toggle">
+                                        <h4 class="panel-title">
+
+                                            Random Weighted Graph <span
+                                                class="indicator glyphicon glyphicon-chevron-down pull-right"></span>
+                                        </h4>
+                                    </a>
                                 </div>
                                 <div id="graph_random_weighted_graph"
                                      class="panel-collapse collapse" aria-expanded="false"
@@ -876,64 +967,54 @@
         <div class="col-md-5">
 
             <div>
-                <button class="btn btn-light pull-right" style="margin-bottom: 10px" onclick="CopyToClipboard()">Copy</button>
+                <button class="btn btn-light pull-right" style="margin-bottom: 10px" onclick="CopyToClipboard()">Copy
+                </button>
                 <br>
-                <textarea id="FinalData" class="form-control" cols="10" id="data" rows="15" style="font-family: monospace"></textarea>
+                <textarea id="FinalData" class="form-control" cols="10" id="data" rows="15"
+                          style="font-family: monospace"></textarea>
 
                 <div>
-                    <button class="btn btn-success pull-left col-md-5" type="submit" onclick="generator_click()" >Generate</button>
+                    <button class="btn btn-success pull-left col-md-5" type="submit" onclick="generator_click()">
+                        Generate
+                    </button>
                     <div class="pull-left col-md-5">
-                        <button class="btn btn-primary pull-right" id="download_as_file" title="Download" onclick="saveTextAsFile()">
+                        <button class="btn btn-primary pull-right" id="download_as_file" title="Download"
+                                onclick="saveTextAsFile()">
                             <span class="glyphicon glyphicon-download-alt"></span>
                         </button>
                     </div>
-                    <button class="btn btn-warning pull-right" id="reset_textarea" value="Clear" onclick="clear_Text()">Reset</button>
+                    <button class="btn btn-warning pull-right" id="reset_textarea" value="Clear" onclick="clear_Text()">
+                        Reset
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div>
-    <div class="container" style="padding-top: 50px">
-        <div class="row text-center">
-            <div class="col-sm-6 card">
-                <img src="https://avatars2.githubusercontent.com/u/46717453?s=460&u=138c750b0fa61c11aa1da19b2ab4cd64457e2323&v=4"
-                        class="card-img-top"
-                        style="width: 10rem; height: auto; border-radius: 5px">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Jatin Garg</h5>
-                </div>
-                <a href="https://www.github.com/jatin-773762">
-                    <div class="card-footer text-muted git_link">
-                        <i class="fa fa-github fa-align-center" style="font-size: 24px"></i>
-                        <strong>Developer</strong>
-                    </div>
-                </a>
+<div class="modal fade" id="comment" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title col-md-5" >Comments</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="col-sm-6 card">
-                <img
-                        src="https://avatars3.githubusercontent.com/u/49210766?s=460&u=496f08c1e3f7e11b328b52c82490ed8d1300efd9&v=4"
-                        class="card-img-top"
-                        style="width: 10rem; height: auto; border-radius: 5px">
-                <div class="card-body center-block">
-                    <h5 class="card-title">Madhav Agarwal</h5>
-                </div>
-                <a href="https://www.github.com/madhav5225">
-                    <div class="card-footer text-muted git_link">
-                        <i class="fa fa-github" style="font-size: 24px"></i> <strong>Developer</strong>
+            <div class="modal-body">
+                <div class="container-fluid">
+<!--                    <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>-->
+                    <div class="fb-comments"
+                         data-href="https://generatetestcase.herokuapp.com/"
+                         data-numposts="5" data-width="auto">
                     </div>
-                </a>
+                </div>
             </div>
         </div>
     </div>
-    <hr class="center-block">
 </div>
 
-<div class="fb-comments"
-     data-href="https://generatetestcase.herokuapp.com/"
-     data-numposts="5" data-width="auto">
-
-</div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 </body>
 </html>
